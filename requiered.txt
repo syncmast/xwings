@@ -1,0 +1,19 @@
+g++
+CodeBlocks  CodeLite
+libx11-dev
+libxfixes-dev
+libxrender-dev
+libxrandr-dev
+libxext-dev
+libxpm-dev
+libjpeg8-dev
+libpng12-dev
+
+
+
+
+
+
+
+
+
