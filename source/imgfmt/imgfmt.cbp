@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="xw.img" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../../lib/debug/xw.img" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../lib/debug/obj" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../lib/debug" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="../../lib/release/xw" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../lib/release/obj" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="../../lib/release" />
+				</Linker>
+			</Target>
+			<Target title="StaticDebug">
+				<Option output="../../lib/debug/xw" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../../lib/debug/obj" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../lib/debug" />
+				</Linker>
+			</Target>
+			<Target title="StaticRelease">
+				<Option output="../../lib/release/xw" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="../../lib/release/obj" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="../../lib/release" />
+				</Linker>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="DebugFull" targets="Debug;StaticDebug;" />
+			<Add alias="ReleaseFull" targets="Release;StaticRelease;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-fPIC" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="../../include" />
+		</Compiler>
+		<Linker>
+			<Add library="xw.gdi" />
+			<Add library="Xpm" />
+			<Add library="jpeg" />
+			<Add library="png" />
+		</Linker>
+		<Unit filename="gif.cpp" />
+		<Unit filename="grutils.cpp" />
+		<Unit filename="imgfmt.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
