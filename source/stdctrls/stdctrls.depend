@@ -1,0 +1,104 @@
+# depslib dependency file v1.0
+1415092406 source:/home/user/Projects/xwings/source/stdctrls/scrollbar.cpp
+	"stdctrls.h"
+	"scrollbar.h"
+
+1421521240 /home/user/Projects/xwings/include/stdctrls.h
+	"xgdi.h"
+	"comctrls.h"
+	"menu.h"
+
+1422183333 /home/user/Projects/xwings/include/xgdi.h
+	"graphics.h"
+
+1421440361 /home/user/Projects/xwings/include/graphics.h
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	<X11/extensions/Xfixes.h>
+	<X11/extensions/Xrender.h>
+	"tobj.h"
+
+1421261242 /home/user/Projects/xwings/include/tobj.h
+	"rtti.h"
+
+1421261242 /home/user/Projects/xwings/include/rtti.h
+	<typeinfo>
+	"types.h"
+
+1421261242 /home/user/Projects/xwings/include/types.h
+	<algorithm>
+	<map>
+	<set>
+	<string>
+	<iostream>
+	<sstream>
+	<list>
+	<exception>
+	<limits.h>
+	<stdlib.h>
+	"property.hpp"
+	"delegate.hpp"
+
+1421261242 /home/user/Projects/xwings/include/property.hpp
+
+1237398598 /home/user/Projects/xwings/include/delegate.hpp
+	<memory.h>
+
+1420384645 /home/user/Projects/xwings/include/comctrls.h
+	"xgdi.h"
+	"application.h"
+
+1420384645 /home/user/Projects/xwings/include/application.h
+	<locale.h>
+	"forms.h"
+
+1420384645 /home/user/Projects/xwings/include/forms.h
+	"cursor.h"
+	"sysobj.h"
+
+1420384645 /home/user/Projects/xwings/include/cursor.h
+	"xgdi.h"
+
+1421261242 /home/user/Projects/xwings/include/sysobj.h
+	<pthread.h>
+	<signal.h>
+	"tobj.h"
+
+1420384645 /home/user/Projects/xwings/include/menu.h
+	"forms.h"
+
+1415092354 /home/user/Projects/xwings/include/scrollbar.h
+	"sysobj.h"
+	<comctrls.h>
+
+1420912285 source:/home/user/Projects/xwings/source/stdctrls/stdctrls.cpp
+	"application.h"
+	"rtti.h"
+	"xpainter.h"
+	"stdctrls.h"
+	<stdio.h>
+
+1415092443 /home/user/Projects/xwings/include/xpainter.h
+	"xgdi.h"
+
+1421091454 source:/home/user/Projects/xwings/source/stdctrls/stdgraph.cpp
+	<math.h>
+	"stdgraph.h"
+
+1421089718 /home/user/Projects/xwings/include/stdgraph.h
+	"graphics.h"
+
+1420914790 source:/home/user/Projects/xwings/source/stdctrls/xpainter.cpp
+	"stdctrls.h"
+	"stdgraph.h"
+	"xpainter.h"
+
+1415092721 source:/home/user/Projects/xwings/source/stdctrls/zoomler.cpp
+	<math.h>
+	"zoomler.h"
+
+1415092644 /home/user/Projects/xwings/include/zoomler.h
+	"sysobj.h"
+	"xgdi.h"
+
