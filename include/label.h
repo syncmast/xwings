@@ -118,6 +118,8 @@ protected:
     virtual void Paint();
 
 public:
+    TString Url;
+
    	TmyaSuperLabel();
     __fastcall TmyaSuperLabel(const TmyaSuperLabel &a);
    	virtual ~TmyaSuperLabel();
@@ -148,7 +150,7 @@ public:
     property Effect98: Boolean read fEffect98 write SetEffect98 default True;
     property ColorSelected: TColor read fColorSelected write fColorSelected default clGreen;
     property MailSubject: string read fMailSubject write fMailSubject;
-    property Url: string read fUrl write fUrl;
+
     property OnMouseEnter: TNotifyEvent read fOnMouseEnter write fOnMouseEnter;
     property OnMouseLeave: TNotifyEvent read fOnMouseLeave write fOnMouseLeave;
 

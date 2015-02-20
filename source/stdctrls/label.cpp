@@ -337,57 +337,52 @@ void TmyaSuperLabel :: Paint()
             DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
             break;
         case lsBottom:
-      with AuxPoint do
-      begin
-        X := Area.Left+2;
-        Y := Area.Bottom-3;
-        DrawLeftFadeLine(AuxPoint, ALength, ALength div 3, clBtnShadow);
-        Y := Y+1;
-        DrawLeftFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
-        Y := AuxPoint.Y-1;
-        X := X+ALength;
-        DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnShadow);
-        Y := Y+1;
-        DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
-      end;
-    lsMiddle:
-      begin
-        AuxPoint.Y := Area.Top+(Area.Bottom-Area.Top) div 2;
-        AuxCaption := Caption;
-        if LabelType=ltSubSuperScript then AuxCaption := ExtractCaption(Caption);
-        case Alignment of
-          taCenter:
-            begin
-              AuxPoint.X := Area.Left+2;
-              ALength := ((Area.Right-2)-(Area.Left+2)-Canvas.TextWidth(AuxCaption)-12) div 2;
-              DrawLeftFadeLine(AuxPoint, ALength, ALength div 3, clBtnShadow);
-              AuxPoint.Y := AuxPoint.Y+1;
-              DrawLeftFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
-              AuxPoint.X := Area.Right-2-ALength;
-              AuxPoint.Y := AuxPoint.Y-1;
-              DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnShadow);
-              AuxPoint.Y := AuxPoint.Y+1;
-              DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
-            end;
-          taLeftJustify:
-            begin
-              AuxPoint.X := Area.Left+Canvas.TextWidth(AuxCaption)+6;
-              ALength := Area.Right-AuxPoint.X-2;
-              DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnShadow);
-              AuxPoint.Y := AuxPoint.Y+1;
-              DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
-            end;
-          taRightJustify:
-            begin
-              AuxPoint.X := Area.Left+2;
-              ALength := Area.Right-Canvas.TextWidth(AuxCaption)-6-AuxPoint.X;
-              DrawLeftFadeLine(AuxPoint, ALength, ALength div 3, clBtnShadow);
-              AuxPoint.Y := AuxPoint.Y+1;
-              DrawLeftFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
-            end;
-        end;
-      end;
-  end;
+            AuxPoint.x = Area.left + 2;
+            AuxPoint.y = Area.bottom() - 3;
+            DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
+            AuxPoint.y += 1;
+            DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
+            AuxPoint.y -= 1;
+            AuxPoint.x += ALength;
+            DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
+            AuxPoint.y += 1;
+            DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
+            break;
+        case lsMiddle:
+            AuxPoint.y = Area.Top + (Area.Bottom - Area.Top) / 2;
+            AuxCaption = Caption;
+            if(LabelType == ltSubSuperScript)
+                AuxCaption = ExtractCaption(Caption);
+            switch(Alignment)
+            {
+                case taCenter:
+                    AuxPoint.x = Area.left + 2;
+                    ALength = ((Area.Right - 2) - (Area.Left + 2) - Canvas.TextWidth(AuxCaption) - 12) / 2;
+                    DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
+                    AuxPoint.y += 1;
+                    DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
+                    AuxPoint.x = Area.Right - 2 - ALength;
+                    AuxPoint.y -= 1;
+                    DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
+                    AuxPoint.y += 1;
+                    DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
+                    break;
+                case taLeftJustify:
+                    AuxPoint.x = Area.left + Canvas.TextWidth(AuxCaption) + 6;
+                    ALength = Area.Right - AuxPoint.x - 2;
+                    DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
+                    AuxPoint.y += 1;
+                    DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
+                    break;
+                case taRightJustify:
+                    AuxPoint.x = Area.left + 2;
+                    ALength = Area.Right - Canvas.TextWidth(AuxCaption) - 6 - AuxPoint.x;
+                    DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
+                    AuxPoint.y += 1;
+                    DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
+                    break;
+            }
+    }
 }
 
 void TmyaSuperLabel :: set_ShadowColor(TColor value)
@@ -549,7 +544,7 @@ void TmyaSuperLabel :: Click()
     char TempPChar[80];
 
     TCommonLabel :: Click();
-    if(Url == '')
+    if(Url == "")
         Choice = Caption;
     else
         Choice = Url;
