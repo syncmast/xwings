@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="source/system/system.cbp" />
+		<Project filename="source/xgdi/xgdi.cbp">
+			<Depends filename="source/system/system.cbp" />
+		</Project>
+		<Project filename="source/imgfmt/imgfmt.cbp">
+			<Depends filename="source/xgdi/xgdi.cbp" />
+		</Project>
+		<Project filename="source/stdctrls/stdctrls.cbp">
+			<Depends filename="source/xgdi/xgdi.cbp" />
+		</Project>
+		<Project filename="source/xexts/xexts.cbp">
+			<Depends filename="source/xgdi/xgdi.cbp" />
+		</Project>
+		<Project filename="source/wm/wm.cbp">
+			<Depends filename="source/xgdi/xgdi.cbp" />
+		</Project>
+		<Project filename="examples/progtest/progtest.cbp">
+			<Depends filename="source/system/system.cbp" />
+			<Depends filename="source/xgdi/xgdi.cbp" />
+			<Depends filename="source/imgfmt/imgfmt.cbp" />
+			<Depends filename="source/stdctrls/stdctrls.cbp" />
+			<Depends filename="source/xexts/xexts.cbp" />
+		</Project>
+		<Project filename="examples/xrender1/xrender1.cbp" />
+		<Project filename="examples/canvas/canvas.cbp" />
+		<Project filename="examples/twoforms/twoforms.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

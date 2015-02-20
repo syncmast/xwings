@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Session Name="/home/user/Projects/xwings/xwingsCL.workspace">
+  <int Value="5" Name="m_selectedTab"/>
+  <wxString Value="/home/user/Projects/xwings/xwingsCL.workspace" Name="m_workspaceName"/>
+  <TabInfoArray Name="TabInfoArray">
+    <TabInfo>
+      <wxString Value="/home/user/Projects/xwings/source/system/sysutils.cpp" Name="FileName"/>
+      <int Value="3" Name="FirstVisibleLine"/>
+      <int Value="1" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/user/Projects/xwings/examples/progtest/MainTest.cpp" Name="FileName"/>
+      <int Value="120" Name="FirstVisibleLine"/>
+      <int Value="118" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/user/Projects/xwings/source/system/rtti.cpp" Name="FileName"/>
+      <int Value="57" Name="FirstVisibleLine"/>
+      <int Value="67" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/user/Projects/xwings/examples/progtest/TestForm.cpp" Name="FileName"/>
+      <int Value="886" Name="FirstVisibleLine"/>
+      <int Value="884" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/user/Projects/xwings/source/xgdi/forms.cpp" Name="FileName"/>
+      <int Value="16" Name="FirstVisibleLine"/>
+      <int Value="14" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/user/Projects/xwings/source/system/sysobj.cpp" Name="FileName"/>
+      <int Value="384" Name="FirstVisibleLine"/>
+      <int Value="1" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+  </TabInfoArray>
+  <SerializedObject Name="m_breakpoints">
+    <long Value="0" Name="Count"/>
+  </SerializedObject>
+</Session>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="xwingsCL" Database="./xwingsCL.tags">
+  <Project Name="system" Path="source/system/system.project" Active="No"/>
+  <Project Name="xgdi" Path="source/xgdi/xgdi.project" Active="No"/>
+  <Project Name="imgfmt" Path="source/imgfmt/imgfmt.project" Active="No"/>
+  <Project Name="stdctrls" Path="source/stdctrls/stdctrls.project" Active="No"/>
+  <Project Name="xexts" Path="source/xexts/xexts.project" Active="No"/>
+  <Project Name="progtest" Path="examples/progtest/progtest.project" Active="Yes"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Project Name="system" ConfigName="Debug"/>
+      <Project Name="xgdi" ConfigName="Debug"/>
+      <Project Name="imgfmt" ConfigName="Debug"/>
+      <Project Name="stdctrls" ConfigName="Debug"/>
+      <Project Name="xexts" ConfigName="Debug"/>
+      <Project Name="progtest" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Project Name="system" ConfigName="Release"/>
+      <Project Name="xgdi" ConfigName="Release"/>
+      <Project Name="imgfmt" ConfigName="Release"/>
+      <Project Name="stdctrls" ConfigName="Release"/>
+      <Project Name="xexts" ConfigName="Release"/>
+      <Project Name="progtest" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>
