@@ -493,9 +493,9 @@ TScrollBar :: TScrollBar()
     FTimer.Interval = 100;
 }
 
-void TScrollBar :: MouseExit(TShiftState state, int x, int y)
+void TScrollBar :: MouseLeave(TShiftState state, int x, int y)
 {
-    TControl :: MouseExit(state, x, y);
+    TControl :: MouseLeave(state, x, y);
     CurrentPosition = spNone;
 }
 

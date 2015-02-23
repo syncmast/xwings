@@ -193,7 +193,7 @@ void TCommonMenuItem :: HideSubMenu()
         m_Submenu->Close();
 }
 //---------------------------------------------------------------------------
-void TCommonMenuItem :: MouseExit(TShiftState state, int x, int y)
+void TCommonMenuItem :: MouseLeave(TShiftState state, int x, int y)
 {
     if(m_Submenu)
     {
@@ -209,7 +209,7 @@ void TCommonMenuItem :: MouseExit(TShiftState state, int x, int y)
                 HideSubMenu();
         }
     }
-    TControl :: MouseExit(state, x, y);
+    TControl :: MouseLeave(state, x, y);
 }
 //---------------------------------------------------------------------------
 void TCommonMenuItem :: MouseEnter(TShiftState state, int x, int y)
@@ -1643,7 +1643,7 @@ void TCustomPopupMenu :: Measure(uint_t &width, uint_t &height)
     height = maxh;
 }
 //---------------------------------------------------------------------------
-void TCustomPopupMenu :: MouseExit(TShiftState state, int x, int y)
+void TCustomPopupMenu :: MouseLeave(TShiftState state, int x, int y)
 {
 //    if(m_PopupControl)
 //    {
@@ -1683,7 +1683,7 @@ void TCustomPopupMenu :: MouseExit(TShiftState state, int x, int y)
     //			w->GrabMouse = true;
     		}
         } */
-    TMenu :: MouseExit(state, x, y);
+    TMenu :: MouseLeave(state, x, y);
 }
 //---------------------------------------------------------------------------
 void TCustomPopupMenu :: MouseEnter(TShiftState state, int x, int y)

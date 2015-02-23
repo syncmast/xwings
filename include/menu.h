@@ -55,7 +55,7 @@ protected:
     void Clear();
     virtual void Click();
     virtual void __fastcall MouseEnter(TShiftState state, int x, int y);
-    virtual void __fastcall MouseExit(TShiftState state, int x, int y);
+    virtual void __fastcall MouseLeave(TShiftState state, int x, int y);
     virtual void __fastcall MouseDown(TMouseButton button, uint_t state, int x, int y);
 
 public:
@@ -333,7 +333,7 @@ protected:
     virtual void Measure(uint_t &width, uint_t &height);
 
     virtual void MouseEnter(TShiftState state, int x, int y);
-    virtual void MouseExit(TShiftState state, int x, int y);
+    virtual void MouseLeave(TShiftState state, int x, int y);
     virtual void MouseMove(TShiftState state, int x, int y);
     virtual void DoEnter();
     virtual void DoExit();

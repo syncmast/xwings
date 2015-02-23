@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="twoforms" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="debug/twoforms" prefix_auto="1" extension_auto="1" />
+				<Option object_output="debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="system" />
+					<Add library="xgdi" />
+					<Add library="stdctrls" />
+					<Add directory="../../lib/debug" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="release/twoforms" prefix_auto="1" extension_auto="1" />
+				<Option object_output="release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="../../include" />
+		</Compiler>
+		<Unit filename="first.cpp" />
+		<Unit filename="first.h" />
+		<Unit filename="second.cpp" />
+		<Unit filename="second.h" />
+		<Unit filename="twoforms.cpp" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

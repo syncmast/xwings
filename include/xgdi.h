@@ -304,7 +304,7 @@ protected:
     virtual void DblClick();
     virtual void TripleClick();
     virtual void __fastcall MouseEnter(TShiftState state, int x, int y);
-    virtual void __fastcall MouseExit(TShiftState state, int x, int y);
+    virtual void __fastcall MouseLeave(TShiftState state, int x, int y);
     virtual void Resize();
     virtual void __fastcall SetZOrder(bool topmost);
     virtual void __fastcall BeginDrag(TShiftState state, int x, int y);
@@ -333,7 +333,7 @@ public:
     TMouseEvent  		OnMouseUp;
     TMouseMoveEvent 	OnMouseMove;
     TMouseMoveEvent 	OnMouseEnter;
-    TMouseMoveEvent 	OnMouseExit;
+    TMouseMoveEvent 	OnMouseLeave;
     TNotifyEvent     	OnPaint;
 
     TStartDragEvent 	OnStartDrag;

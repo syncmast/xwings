@@ -1,0 +1,79 @@
+# depslib dependency file v1.0
+1414942087 source:/home/user/Projects/xwings/examples/ProcessMsg/main.cpp
+	"ProcessMsg.h"
+
+1414943019 /home/user/Projects/xwings/examples/ProcessMsg/ProcessMsg.h
+	<xwings.h>
+	<stdctrls.h>
+
+1414839007 /home/user/Projects/xwings/include/xwings.h
+	"application.h"
+
+1410715076 /home/user/Projects/xwings/include/application.h
+	<locale.h>
+	"forms.h"
+
+1414177605 /home/user/Projects/xwings/include/forms.h
+	"cursor.h"
+	"sysobj.h"
+
+1365963336 /home/user/Projects/xwings/include/cursor.h
+	"xgdi.h"
+
+1414863282 /home/user/Projects/xwings/include/xgdi.h
+	"graphics.h"
+
+1414864396 /home/user/Projects/xwings/include/graphics.h
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	<X11/extensions/Xfixes.h>
+	<X11/extensions/Xrender.h>
+	"tobj.h"
+
+1405331908 /home/user/Projects/xwings/include/tobj.h
+	"rtti.h"
+
+1380827964 /home/user/Projects/xwings/include/rtti.h
+	<typeinfo>
+	"types.h"
+
+1405332240 /home/user/Projects/xwings/include/types.h
+	<algorithm>
+	<map>
+	<set>
+	<string>
+	<iostream>
+	<sstream>
+	<list>
+	<exception>
+	<limits.h>
+	<stdlib.h>
+	"property.hpp"
+	"delegate.hpp"
+
+1412962679 /home/user/Projects/xwings/include/property.hpp
+
+1237398598 /home/user/Projects/xwings/include/delegate.hpp
+	<memory.h>
+
+1409849761 /home/user/Projects/xwings/include/sysobj.h
+	<pthread.h>
+	<signal.h>
+	"tobj.h"
+
+1413131604 /home/user/Projects/xwings/include/stdctrls.h
+	"xgdi.h"
+	"comctrls.h"
+	"menu.h"
+
+1413739465 /home/user/Projects/xwings/include/comctrls.h
+	"xgdi.h"
+	"application.h"
+
+1409313262 /home/user/Projects/xwings/include/menu.h
+	"forms.h"
+
+1414943972 source:/home/user/Projects/xwings/examples/ProcessMsg/ProcessMsg.cpp
+	"ProcessMsg.h"
+

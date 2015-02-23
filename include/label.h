@@ -39,6 +39,8 @@ History :
 
 #include "comctrls.h"
 //---------------------------------------------------------------------------
+namespace xwings {
+//---------------------------------------------------------------------------
 //  TLabel
 //---------------------------------------------------------------------------
 
@@ -56,7 +58,7 @@ enum TFitType { ftNormalFit, ftBestFitVert, ftBestFithorz, ftBestFitBoth };
 enum TGradientStyle { gsNone, gsHorizontal, gsVertical, gsElliptic, gsRectangle,
                     gsVertCenter, gsHorizCenter };
 // Label Type: if ltNormal is selected the behaviour is like VCL Label
-enum TLabelType { ltNormal, ltSubSuperScript, ltHttp, ltMail, ltFtp, ltNews );
+enum TLabelType { ltNormal, ltSubSuperScript, ltHttp, ltMail, ltFtp, ltNews };
 // Line Style: if lsNone is selected no line is drawn
 enum TLineStyle { lsNone, lsTop, lsBottom, lsMiddle };
 
@@ -69,46 +71,44 @@ class TmyaSuperLabel : public TCommonLabel
     DECLARE_PROPERTY( TmyaSuperLabel );
 
 private:
-    TColor fColorNormal, fColorSelected, fShadowColor;
-    TColor fWhiteColor, fLast, fBeginColor, fEndColor;
-    TLabelType fLabelType;
-    bool fEffect98, fFrame, fShadeLTSet;
-    TString fUrl, fMailSubject;
-    TLineStyle fLineStyle;
-    int fOldWidth, fOldHeight, fOldSize, fhOffSet, fvOffSet;
-    TFitType fFitType;
-    T3DEffect f3DEffect;
-    TGradientStyle fGradientStyle;
+    TColor fColorNormal, m_ShadeRightBottom;
+    TColor m_ShadeLeftTop, fLast, m_BeginColor, m_EndColor;
+    TLabelType m_LabelType;
+    bool m_Effect98, m_Frame, m_ShadeLT;
+    TLineStyle m_LineStyle;
+    int fOldWidth, fOldHeight, fOldSize, m_AHShadeOffset, m_AVShadeOffset;
+    TFitType m_FitType;
+    T3DEffect m_Effect3D;
+    TGradientStyle m_GradientStyle;
 
-    void set_StyleEffect(T3DEffect value);
-    void set_ShadowColor(TColor value);
-    void set_WhiteColor(TColor value);
-    void SetFhOffSet(value: integer);
-    void SetFvOffSet(value: integer);
-    void SetShadeLT(value: boolean);
-    void SetFitType(Value: TFitType);
-    void SetBeginColor(Value: TColor);
-    void SetEndColor(Value: TColor);
-    void SetGradient(Value: TGradientStyle);
-    void SetLabelType(const Value: TLabelType);
-    void SetEffect98(const Value: Boolean);
-    void SetFrame(const Value: Boolean);
-    void SetLineStyle(const Value: TLineStyle);
-    void SuperLabelMouseEnter(var Message: TMessage); message CM_MOUSEENTER;
-    void SuperLabelMouseLeave(var Message: TMessage); message CM_MOUSELEAVE;
+    void set_Effect3D(T3DEffect value);
+    void set_ShadeRightBottom(TColor value);
+    void set_ShadeLeftTop(TColor value);
+    void set_AHShadeOffset(int value);
+    void set_AVShadeOffset(int value);
+    void set_ShadeLT(bool value);
+    void set_FitType(TFitType value);
+    void set_BeginColor(TColor value);
+    void set_EndColor(TColor value);
+    void set_GradientStyle(TGradientStyle value);
+    void set_LabelType(TLabelType value);
+    void set_Effect98(bool value);
+    void set_Frame(bool value);
+    void set_LineStyle(TLineStyle value);
+
+    void MouseEnter(TShiftState state, int x, int y);
+    void MouseLeave(TShiftState state, int x, int y);
     void DoDrawText(const TRect &Area, word_t Flags);
-    void NewDrawText(Text: PChar; var Area: TRect; Flags: Word);
+    void NewDrawText(char *text, TRect &area, word_t flags);
     TString ExtractCaption(TString value);
     void DoHorizontal(int fr, int fg, int fb, int dr, int dg, int db); //These all draw
     void DoVertical(int fr, int fg, int fb, int dr, int dg, int db);  // the gradients.
     void DoElliptic(int fr, int fg, int fb, int dr, int dg, int db); // The fr fg fb etc
     void DoRectangle(int fr, int fg, int fb, int dr, int dg, int db); // are color values.
     void DoVertCenter(int fr, int fg, int fb, int dr, int dg, int db);
-    void DoHorizCenter(fr, fg, fb, dr, dg, db: Integer);
-    void DrawLeftFadeLine(APoint: TPoint; ALength, AFadeWidth: Integer;
-                               AFadeColor: TColor);
-    void DrawRightFadeLine(APoint: TPoint; ALength, AFadeWidth: Integer;
-                                AFadeColor: TColor);
+    void DoHorizCenter(int fr, int fg, int fb, int dr, int dg, int db);
+    void DrawLeftFadeLine(TPoint APoint, int ALength, int AFadeWidth, TColor AFadeColor);
+    void DrawRightFadeLine(TPoint APoint, int ALength, int AFadeWidth, TColor AFadeColor);
 
     void Init();
     __fastcall void Assign(const TmyaSuperLabel &obj);
@@ -119,63 +119,32 @@ protected:
 
 public:
     TString Url;
+    TString MailSubject;
+    TColor ColorSelected;
 
    	TmyaSuperLabel();
     __fastcall TmyaSuperLabel(const TmyaSuperLabel &a);
    	virtual ~TmyaSuperLabel();
    	__fastcall const TmyaSuperLabel & operator=(const TmyaSuperLabel &a);
 
-    procedure OpenObject(sObjectPath: PChar); {Related to hiperlink}
+    void OpenObject(char *sObjectPath); //{Related to hiperlink}
 
-    property Align;
-    property Caption;
-    Property AFitType: TFitType read FFitType write SetFitType;
-
-    property AStyle3D: T3DEffect read F3DEffect write setStyleEffect default Normal3d;
-    property AShadeRightBottom: TColor read FShadowColor write SetShadowColor default clGray;
-    property AShadeLeftTop: TColor read FWhiteColor write SetWhiteColor default clWhite;
-    property AHShadeOffSet: integer read FhOffSet write SetFhOffSet default 5;
-    property AVShadeOffSet: integer read FvOffSet write SetFvOffSet default -5;
-    property AShadeLTSet: boolean read FShadeLTSet write setShadeLT default true;
-
-    property GradientStyle: TGradientStyle read FGradientStyle write SetGradient default gsNone;
-    property BeginColor: TColor read FBeginColor write SetBeginColor default clNavy;
-    property EndColor: TColor read FEndColor write SetEndColor default clAqua;
-
-    property Frame: Boolean read fFrame write SetFrame default False;
-
-    property LineStyle: TLineStyle read fLineStyle write SetLineStyle default lsNone;
-
-    property LabelType: TLabelType read fLabelType write SetLabelType default ltNormal;
-    property Effect98: Boolean read fEffect98 write SetEffect98 default True;
-    property ColorSelected: TColor read fColorSelected write fColorSelected default clGreen;
-    property MailSubject: string read fMailSubject write fMailSubject;
-
-    property OnMouseEnter: TNotifyEvent read fOnMouseEnter write fOnMouseEnter;
-    property OnMouseLeave: TNotifyEvent read fOnMouseLeave write fOnMouseLeave;
-
-    property DragCursor;
-    property DragMode;
-    property Enabled;
-    property Font;
-    property ParentColor;
-    property ParentFont;
-    property ParentShowHint;
-    property PopupMenu;
-    property ShowHint;
-    property Visible;
-    property Transparent;
-    property Width;
-    property Top;
-    property Left;
-    property Height;
-    property OnClick;
-    property OnDblClick;
-    property OnDragDrop;
-    property OnDragOver;
-    property OnEndDrag;
-    property OnMouseDown;
-    property OnMouseUp;
+    property (m, int, AHShadeOffset);
+    property (m, int, AVShadeOffset);
+    property (m, TFitType, FitType);
+    property (m, T3DEffect, Effect3D);
+    property (m, TColor, ShadeRightBottom);
+    property (m, TColor, ShadeLeftTop);
+    property (m, bool, ShadeLT);
+    property (m, TGradientStyle, GradientStyle);
+    property (m, TColor, BeginColor);
+    property (m, TColor, EndColor);
+    property (m, bool, Frame);
+    property (m, TLineStyle, LineStyle);
+    property (m, TLabelType, LabelType);
+    property (m, bool, Effect98);
 };
+//---------------------------------------------------------------------------
+} //namespace
 //---------------------------------------------------------------------------
 #endif // TLABEL_H_INCLUDED

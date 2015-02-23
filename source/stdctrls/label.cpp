@@ -43,6 +43,8 @@ History :
 #define SUB  "_"
 #define SUPER "^"
 //---------------------------------------------------------------------------
+namespace xwings {
+//---------------------------------------------------------------------------
 //  TmyaSuperLabel
 //---------------------------------------------------------------------------
 DYNAMIC_CLASS( TmyaSuperLabel );
@@ -73,30 +75,27 @@ __fastcall const TmyaSuperLabel & TmyaSuperLabel :: operator=(const TmyaSuperLab
 //---------------------------------------------------------------------------
 void TmyaSuperLabel :: Init()
 {
+    m_Effect3D = Normal3d;
   Transparent = true;
-  ParentColor = false;
-  fShadowColor = clGray;
-  fWhiteColor = clWhite;
-  fhOffSet = 5;
-  fvOffSet = -5;
+  m_ShadeRightBottom = clGray;
+  m_ShadeLeftTop = clWhite;
+  m_AHShadeOffset = 5;
+  m_AVShadeOffset = -5;
   fLast = clWhite;
-  Autosize = false;
-  fFitType = ftBestFitBoth;
-  fOldSize = Canvas.Font.Size;
+  AutoSize = false;
+  m_FitType = ftBestFitBoth;
+  fOldSize = Canvas.Font->Size;
   fOldWidth = Width;
   fOldHeight = Height;
 
-  fGradientStyle = gsNone;
-  fBeginColor = clNavy;
-  fEndColor = clAqua;
-
-  fFrame = false;
-
-  fLineStyle = lsNone;
-
-  fLabelType = ltNormal;
-  fEffect98 = true;
-  fColorSelected = clGreen;
+  m_GradientStyle = gsNone;
+  m_BeginColor = clNavy;
+  m_EndColor = clAqua;
+  m_Frame = false;
+  m_LineStyle = lsNone;
+  m_LabelType = ltNormal;
+  m_Effect98 = true;
+  ColorSelected = clGreen;
 }
 //---------------------------------------------------------------------------
 __fastcall void TmyaSuperLabel :: Assign(const TmyaSuperLabel &obj)
@@ -110,7 +109,7 @@ void TmyaSuperLabel :: DoDrawText(const TRect &Area, word_t Flags)
     TRect TmpRect;
     TColor UpperColor, LowerColor;
 
-    Size := GetTextLen;     // Get length of string in Edit1
+    Size = GetTextLen;     // Get length of string in Edit1
     Size++;              // Add room for null character
   GetMem(Text, Size);
   GetTextBuf(Text, Size); // Creates Buffer dynamic variable
@@ -120,11 +119,11 @@ void TmyaSuperLabel :: DoDrawText(const TRect &Area, word_t Flags)
   if(!ShowAccelChar)
     Flags = Flags | DT_NOPREFIX;
   Canvas.Font = Font;
-    switch(AStyle3D)
+    switch(m_Effect3D)
     {
         case Resit3d:
-                UpperColor = fShadowColor;
-                LowerColor = fWhiteColor;
+                UpperColor = m_ShadeRightBottom;
+                LowerColor = m_ShadeLeftTop;
                 TmpRect = Area;
                 OffsetRect(TmpRect, 1, 1);
                 Canvas.Font->Color = LowerColor;
@@ -135,8 +134,8 @@ void TmyaSuperLabel :: DoDrawText(const TRect &Area, word_t Flags)
                 NewDrawText(Text, TmpRect, Flags);
                 break;
         case Raised3d:
-                UpperColor = fWhiteColor;
-                LowerColor = fShadowColor;
+                UpperColor = m_ShadeLeftTop;
+                LowerColor = m_ShadeRightBottom;
                 TmpRect = Area;
                 OffsetRect(TmpRect, 1, 1);
                 Canvas.Font->Color = LowerColor;
@@ -147,19 +146,19 @@ void TmyaSuperLabel :: DoDrawText(const TRect &Area, word_t Flags)
                 NewDrawText(Text, TmpRect, Flags);
                 break;
         case Shadowed3D:
-                UpperColor = fWhiteColor;
-                LowerColor = fShadowColor;
+                UpperColor = m_ShadeLeftTop;
+                LowerColor = m_ShadeRightBottom;
                 TmpRect = Area;
-                OffsetRect(TmpRect, FhOffSet, FvOffSet);
+                OffsetRect(TmpRect, m_AHShadeOffset, FvOffSet);
                 Canvas.Font->Color = LowerColor;
                 NewDrawText(Text, TmpRect, Flags);
                 break;
   };
-  Canvas.Font->Color = Font.Color;
+  Canvas.Font->Color = Font->Color;
   if(!AutoSize)
     if((fOldSize<>Canvas.Font.Size) or (fOldWidth != Width) or (fOldHeight != Height))
     {
-        switch(AFitType)
+        switch(m_FitType)
         {
             case ftBestFitBoth:
                 Canvas.Font->Size = 0;
@@ -385,11 +384,11 @@ void TmyaSuperLabel :: Paint()
     }
 }
 
-void TmyaSuperLabel :: set_ShadowColor(TColor value)
+void TmyaSuperLabel :: set_ShadeRightBottom(TColor value)
 {
-    if(fShadowColor == value)
+    if(m_ShadeRightBottom == value)
         return;
-    fShadowColor = value;
+    m_ShadeRightBottom = value;
     Invalidate();
 }
 
@@ -402,113 +401,113 @@ void TmyaSuperLabel :: set_FitType(TFitType value)
     Invalidate();
 }
 
-void TmyaSuperLabel :: set_FhOffSet(int value)
+void TmyaSuperLabel :: set_AHShadeOffset(int value)
 {
-    if(value == fhOffSet)
+    if(value == m_AHShadeOffset)
         return;
-    fhOffSet = value;
+    m_AHShadeOffset = value;
     Invalidate();
 }
 
-void TmyaSuperLabel :: set_FvOffSet(int value)
+void TmyaSuperLabel :: set_AVShadeOffset(int value)
 {
-    if(value == fvOffSet)
+    if(value == m_AVShadeOffset)
         return;
-    fvOffSet = value;
+    m_AVShadeOffset = value;
     Invalidate();
 }
 
-void TmyaSuperLabel :: set_WhiteColor(TColor value)
+void TmyaSuperLabel :: set_ShadeLeftTop(TColor value)
 {
-    if(not (fWhiteColor == value) and (not fShadeLTSet))
+    if(not (m_ShadeLeftTop == value) and (not m_ShadeLT))
     {
-        fWhiteColor = value;
+        m_ShadeLeftTop = value;
         Invalidate();
     }
 }
 
-void TmyaSuperLabel :: set_StyleEffect(T3DEffect value)
+void TmyaSuperLabel :: set_Effect3D(T3DEffect value)
 {
-    if(f3DEffect == value)
+    if(m_Effect3D == value)
         return;
-    f3DEffect = value;
+    m_Effect3D = value;
     Invalidate();
 }
 
 void TmyaSuperLabel :: set_ShadeLT(bool value)
 {
-    if(fShadeLTSet == value)
+    if(m_ShadeLT == value)
         return;
-    fShadeLTSet = value;
-    if(fShadeLTSet)
+    m_ShadeLT = value;
+    if(m_ShadeLT)
     {
-        fLast = fWhiteColor;
-        fWhiteColor = clWhite;
+        fLast = m_ShadeLeftTop;
+        m_ShadeLeftTop = clWhite;
     }
     else
-        fWhiteColor = Flast;
+        m_ShadeLeftTop = Flast;
     Invalidate();
 }
 
 void TmyaSuperLabel :: set_BeginColor(TColor value)
 {
-    if(fBeginColor == value)
+    if(m_BeginColor == value)
         return;
-    fBeginColor = value;
+    m_BeginColor = value;
     Invalidate();
 }
 
 void TmyaSuperLabel :: set_EndColor(TColor value)
 {
-    if(fEndColor == value)
+    if(m_EndColor == value)
         return;
-    fEndColor = value;
+    m_EndColor = value;
     Invalidate();
 }
 
-void TmyaSuperLabel :: set_Gradient(TGradientStyle value)
+void TmyaSuperLabel :: set_GradientStyle(TGradientStyle value)
 {
-    if(fGradientStyle == value)
+    if(m_GradientStyle == value)
         return;
-    fGradientStyle = value;
+    m_GradientStyle = value;
     Invalidate();
 }
 
-procedure TmyaSuperLabel.SuperLabelMouseEnter(var Message: TMessage);
-begin
-  if LabelType in [ltHttp, ltFtp, ltNews, ltMail] then
-  begin
-    if Effect98 then
-    begin
-      fColorNormal := Font.Color;
-      Font.Color := ColorSelected;
-      Font.Style := font.Style+[fsUnderline];
-      Invalidate;
-    end;
-  end;
-  if Assigned(fOnMouseEnter) then fOnMouseEnter(Self);
-end;
+void TmyaSuperLabel :: MouseEnter(TShiftState state, int x, int y)
+{
+    if(LabelType > ltSubSuperScript)
+    {
+        if(Effect98)
+        {
+            fColorNormal = Font->Color;
+            Font->Color = ColorSelected;
+            Font->Style = Font->Style << fsUnderline;
+            Invalidate();
+        }
+    }
+    TCommonLabel :: MouseEnter(state, x, y);
+}
 
-procedure TmyaSuperLabel.SuperLabelMouseLeave(var Message: TMessage);
-begin
-  if LabelType in [ltHttp, ltFtp, ltNews, ltMail] then
-  begin
-    if Effect98 then
-    begin
-      Font.Color := fColorNormal;
-      Font.Style := font.Style-[fsUnderline];
-      Invalidate;
-    end;
-  end;
-  if Assigned(fOnMouseLeave) then fOnMouseLeave(Self);
-end;
+void TmyaSuperLabel :: MouseLeave(TShiftState state, int x, int y)
+{
+    if(LabelType > ltSubSuperScript)
+    {
+        if(Effect98)
+        {
+            Font->Color = fColorNormal;
+            Font->Style = Font->Style >> fsUnderline;
+            Invalidate();
+        }
+    }
+    TCommonLabel :: MouseLeave(state, x, y);
+}
 
 void TmyaSuperLabel :: set_LabelType(TLabelType value)
 {
-    if(fLabelType == value)
+    if(m_LabelType == value)
         return;
-    fLabelType = value;
-    if(LabelType in [ltHttp, ltFtp, ltNews, ltMail])
+    m_LabelType = value;
+    if(m_LabelType in [ltHttp, ltFtp, ltNews, ltMail])
         Cursor = crHandPoint;
     else
         Cursor = crDefault;
@@ -517,24 +516,24 @@ void TmyaSuperLabel :: set_LabelType(TLabelType value)
 
 void TmyaSuperLabel :: set_Effect98(bool value)
 {
-    if(fEffect98 == value)
+    if(m_Effect98 == value)
         return;
-    fEffect98 = value;
+    m_Effect98 = value;
 }
 
 void TmyaSuperLabel :: set_Frame(bool value)
 {
-    if(fFrame == value)
+    if(m_Frame == value)
         return;
-    fFrame = value;
+    m_Frame = value;
     Invalidate();
 }
 
 void TmyaSuperLabel :: set_LineStyle(TLineStyle value)
 {
-    if(fLineStyle == value)
+    if(m_LineStyle == value)
         return;
-    fLineStyle = value;
+    m_LineStyle = value;
     Invalidate();
 }
 
@@ -558,22 +557,24 @@ void TmyaSuperLabel :: Click()
     if(LabelType in [ltHttp, ltFtp, ltNews, ltMail])
     {
         StrPCopy(TempPChar,App);
-        OpenObject(TempPChar)
+        OpenObject(TempPChar);
     }
 }
 
-procedure TmyaSuperLabel.OpenObject(sObjectPath: PChar);
-begin
-  if LabelType in [ltNormal, ltSubSuperScript] then exit;
-  if LabelType<>ltHttp then
-    ShellExecute(0, Nil, sObjectPath, Nil, Nil, SW_NORMAL)
-  else begin
-    if ShellExecute(Application.Handle,PChar('open'),sObjectPath,PChar(''),nil, SW_NORMAL)<33 then
-      if ShellExecute(Application.Handle,PChar('open'),PChar('netscape.exe'),sObjectPath, nil,SW_NORMAL)<32 then
-        if ShellExecute(Application.Handle,PChar('open'),PChar('iexplore.exe'),sObjectPath,nil,SW_NORMAL)<32 then
-          ShowMessage ('Sorry your browser could not be found');
-  end;
-end;
+void TmyaSuperLabel :: OpenObject(char *sObjectPath)
+{
+/*    if(LabelType in [ltNormal, ltSubSuperScript])
+        return;
+    if(LabelType != ltHttp)
+        ShellExecute(0, Nil, sObjectPath, Nil, Nil, SW_NORMAL);
+    else
+    {
+        if ShellExecute(Application.Handle,PChar('open'),sObjectPath,PChar(''),nil, SW_NORMAL)<33 then
+            if ShellExecute(Application.Handle,PChar('open'),PChar('netscape.exe'),sObjectPath, nil,SW_NORMAL)<32 then
+                if ShellExecute(Application.Handle,PChar('open'),PChar('iexplore.exe'),sObjectPath,nil,SW_NORMAL)<32 then
+                    ShowMessage ('Sorry your browser could not be found');
+    } */
+}
 
 void TmyaSuperLabel :: DrawLeftFadeLine(TPoint &APoint, int ALength, int AFadeWidth, TColor AFadeColor)
 {
@@ -815,9 +816,12 @@ TString TmyaSuperLabel :: ExtractCaption(TString value)
     byte_t nFor;
     TString AuxString;
 
-    AuxString = '';
+    AuxString = "";
     for(nFor = 1; nFor <= Length(value); nFor++)
         if((value[nFor] != SUB) and (value[nFor] != SUPER))
             AuxString = AuxString + value[nFor];
     ExtractCaption = AuxString;
 }
+//---------------------------------------------------------------------------
+} //namespace
+//---------------------------------------------------------------------------

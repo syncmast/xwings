@@ -95,7 +95,7 @@ protected:
 
 //    procedure WMNCHitTest(var Message:TWMNCHitTest);message WM_NCHitTest;
 
-    virtual void MouseExit(TShiftState state, int x, int y);
+    virtual void MouseLeave(TShiftState state, int x, int y);
     virtual void MouseDown(TMouseButton button, TShiftState state, int x, int y);
     virtual void MouseUp(TMouseButton button, TShiftState state, int x, int y);
 

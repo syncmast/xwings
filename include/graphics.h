@@ -737,30 +737,15 @@ private:
     void Init();
     void __fastcall Assign(const TFont &obj);
     void set_PenStyle(TPenStyle value);
-    inline short get_Ascent()
-    {
-        return m_Font->ascent;
-    };
-    inline short get_Descent()
-    {
-        return m_Font->descent;
-    };
+    inline short get_Ascent() { return m_Font->ascent; };
+    inline short get_Descent() { return m_Font->descent; };
     TString get_Charset();
     void set_Charset(TString value);
-    inline TString get_FaceName()
-    {
-        return GetProperty(FS_FACE_NAME);
-    };
-    inline TString get_FontType()
-    {
-        return GetProperty(FS_FONT_TYPE);
-    };
+    inline TString get_FaceName() { return GetProperty(FS_FACE_NAME); };
+    inline TString get_FontType() { return GetProperty(FS_FONT_TYPE); };
     TString get_FullName();
     void set_FullName(TString value);
-    inline bool get_Default()
-    {
-        return m_Font == m_system;
-    };
+    inline bool get_Default() { return m_Font == m_system; };
     TString get_Foundry();
     void set_Foundry(TString value);
     TString get_Family();
@@ -780,14 +765,10 @@ private:
     void set_Setwidth(TString value);
     void set_Style(int value);
 
-    inline short get_Height()
-    {
-        return get_Pixels();
-    };
-    inline void set_Height(short value)
-    {
-        set_Pixels(value);
-    };
+    inline short get_Height() { return get_Pixels(); };
+    inline void set_Height(short value) { set_Pixels(value); };
+    inline short get_Size() { return get_Points(); };
+    inline void set_Size(short value) { set_Points(value); };
 
     void SetName();
 
@@ -822,6 +803,7 @@ public:
     property (m,  TPenStyle, PenStyle);
     property (rw, short,   Points);
     property (rw, short,   Pixels);
+    property (rw, short,   Size);
     property (rw, TFontSlant, Slant);
     property (rw, TFontSpacing, Spacing);
     property (m,  int,  Style);

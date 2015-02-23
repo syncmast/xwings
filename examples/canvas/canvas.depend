@@ -1,0 +1,82 @@
+# depslib dependency file v1.0
+1414352182 source:/home/user/Projects/xwings/examples/canvas/canmain.cpp
+	"canmain.h"
+	"math.h"
+	<stdlib.h>
+	<stdio.h>
+	<algorithm>
+	"netwm.h"
+
+1415093953 /home/user/Projects/xwings/examples/canvas/canmain.h
+	"xwings.h"
+
+1349892562 /home/user/Projects/xwings/include/xol.h
+	"application.h"
+
+1416860228 /home/user/Projects/xwings/include/application.h
+	<locale.h>
+	"forms.h"
+
+1416859251 /home/user/Projects/xwings/include/forms.h
+	"cursor.h"
+	"sysobj.h"
+
+1415036296 /home/user/Projects/xwings/include/cursor.h
+	"xgdi.h"
+
+1417883284 /home/user/Projects/xwings/include/xgdi.h
+	"graphics.h"
+
+1418497223 /home/user/Projects/xwings/include/graphics.h
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	<X11/extensions/Xfixes.h>
+	<X11/extensions/Xrender.h>
+	"tobj.h"
+
+1415034460 /home/user/Projects/xwings/include/tobj.h
+	"rtti.h"
+
+1415033455 /home/user/Projects/xwings/include/rtti.h
+	<typeinfo>
+	"types.h"
+
+1415648183 /home/user/Projects/xwings/include/types.h
+	<algorithm>
+	<map>
+	<set>
+	<string>
+	<iostream>
+	<sstream>
+	<list>
+	<exception>
+	<limits.h>
+	<stdlib.h>
+	"property.hpp"
+	"delegate.hpp"
+
+1412962679 /home/user/Projects/xwings/include/property.hpp
+
+1237398598 /home/user/Projects/xwings/include/delegate.hpp
+	<memory.h>
+
+1415090435 /home/user/Projects/xwings/include/sysobj.h
+	<pthread.h>
+	<signal.h>
+	"tobj.h"
+
+1366738792 source:/home/user/Projects/xwings/examples/canvas/Canvas.cpp
+	"canmain.h"
+
+1415037457 /home/user/Projects/xwings/include/netwm.h
+	"types.h"
+
+1415093794 /home/user/Projects/xwings/include/xwings.h
+	"grctrls.h"
+	"application.h"
+
+1415091686 /home/user/Projects/xwings/include/grctrls.h
+	"sysobj.h"
+	"xgdi.h"
+

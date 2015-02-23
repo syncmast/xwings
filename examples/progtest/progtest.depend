@@ -1,0 +1,197 @@
+# depslib dependency file v1.0
+1421087679 source:/home/user/Projects/xwings/examples/progtest/MainTest.cpp
+	<stdlib.h>
+	<unistd.h>
+	<wchar.h>
+	<stdio.h>
+	<errno.h>
+	<locale.h>
+	<stddef.h>
+	<sys/types.h>
+	<ctype.h>
+	"TestForm.h"
+	"extctrls.h"
+	"lnxfile.h"
+	"imgfmt.h"
+	"xexts.h"
+	"lnxfile.h"
+	"sysutils.h"
+	"rtti.h"
+	"grutils.h"
+	"xstream.h"
+	"netwm.h"
+	"xwings.h"
+	<cups/cups.h>
+	"../../images/about.res"
+	<X11/Xatom.h>
+	<X11/Xlib.h>
+	<X11/keysym.h>
+	<assert.h>
+	<iostream.h>
+	<stdio.h>
+	<unistd.h>
+
+1349892562 /home/user/Projects/xwings/include/xol.h
+	"application.h"
+
+1420384645 /home/user/Projects/xwings/include/application.h
+	<locale.h>
+	"forms.h"
+
+1420384645 /home/user/Projects/xwings/include/forms.h
+	"cursor.h"
+	"sysobj.h"
+
+1420384645 /home/user/Projects/xwings/include/cursor.h
+	"xgdi.h"
+
+1420559677 /home/user/Projects/xwings/include/xgdi.h
+	"graphics.h"
+
+1421087739 /home/user/Projects/xwings/include/graphics.h
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	<X11/extensions/Xfixes.h>
+	<X11/extensions/Xrender.h>
+	"tobj.h"
+
+1420307945 /home/user/Projects/xwings/include/tobj.h
+	"rtti.h"
+
+1415033455 /home/user/Projects/xwings/include/rtti.h
+	<typeinfo>
+	"types.h"
+
+1420536544 /home/user/Projects/xwings/include/types.h
+	<algorithm>
+	<map>
+	<set>
+	<string>
+	<iostream>
+	<sstream>
+	<list>
+	<exception>
+	<limits.h>
+	<stdlib.h>
+	"property.hpp"
+	"delegate.hpp"
+
+1412962679 /home/user/Projects/xwings/include/property.hpp
+
+1237398598 /home/user/Projects/xwings/include/delegate.hpp
+	<memory.h>
+
+1415090435 /home/user/Projects/xwings/include/sysobj.h
+	<pthread.h>
+	<signal.h>
+	"tobj.h"
+
+1420560426 /home/user/Projects/xwings/examples/progtest/TestForm.h
+	"forms.h"
+	"stdctrls.h"
+	"extctrls.h"
+	"socket.h"
+	"menu.h"
+	"grctrls.h"
+	"zoomler.h"
+	"imgfmt.h"
+	"cursor.h"
+	"scrollbar.h"
+
+1420912285 /home/user/Projects/xwings/include/stdctrls.h
+	"xgdi.h"
+	"comctrls.h"
+	"menu.h"
+
+1420384645 /home/user/Projects/xwings/include/comctrls.h
+	"xgdi.h"
+	"application.h"
+
+1420384645 /home/user/Projects/xwings/include/menu.h
+	"forms.h"
+
+1366446856 /home/user/Projects/xwings/include/extctrls.h
+
+1415035810 /home/user/Projects/xwings/include/socket.h
+	<sys/socket.h>
+	<netinet/in.h>
+	<netinet/ip.h>
+	<netinet/tcp.h>
+	"tobj.h"
+
+1420384645 /home/user/Projects/xwings/include/grctrls.h
+	"sysobj.h"
+	"xgdi.h"
+
+1415092644 /home/user/Projects/xwings/include/zoomler.h
+	"sysobj.h"
+	"xgdi.h"
+
+1418485302 /home/user/Projects/xwings/include/imgfmt.h
+	"xstream.h"
+	"graphics.h"
+
+1415090518 /home/user/Projects/xwings/include/xstream.h
+	<fstream>
+	<sstream>
+	<types.h>
+
+1415092354 /home/user/Projects/xwings/include/scrollbar.h
+	"sysobj.h"
+	<comctrls.h>
+
+1415035437 /home/user/Projects/xwings/include/lnxfile.h
+	<dirent.h>
+	"tobj.h"
+
+1415092796 /home/user/Projects/xwings/include/xexts.h
+	<X11/extensions/Xrandr.h>
+	"application.h"
+
+1415090518 /home/user/Projects/xwings/include/sysutils.h
+	"types.h"
+
+1415091948 /home/user/Projects/xwings/include/grutils.h
+	"graphics.h"
+
+1420384645 /home/user/Projects/xwings/include/netwm.h
+	"types.h"
+
+1360178954 /home/user/Projects/xwings/images/about.res
+
+1420975449 source:/home/user/Projects/xwings/examples/progtest/TestForm.cpp
+	<stdlib.h>
+	<unistd.h>
+	<stdio.h>
+	<locale.h>
+	<stddef.h>
+	<sys/types.h>
+	<ctype.h>
+	<time.h>
+	"rtti.h"
+	"application.h"
+	"netwm.h"
+	"TestForm.h"
+	"vxutil.h"
+	"grutils.h"
+	"xpainter.h"
+	"xwrender.h"
+	"stdgraph.h"
+
+1409324786 /home/user/Projects/xwings/include/vxutil.h
+	<wctype.h>
+
+1415092443 /home/user/Projects/xwings/include/xpainter.h
+	"xgdi.h"
+
+1420397701 /home/user/Projects/xwings/include/xwrender.h
+	"graphics.h"
+
+1415093794 /home/user/Projects/xwings/include/xwings.h
+	"grctrls.h"
+	"application.h"
+
+1421083973 /home/user/Projects/xwings/include/stdgraph.h
+	"graphics.h"
+

@@ -1,0 +1,87 @@
+# depslib dependency file v1.0
+1384539447 source:/home/user/Projects/xwings/examples/twoforms/first.cpp
+	"first.h"
+	"second.h"
+
+1384539447 /home/user/Projects/xwings/examples/twoforms/first.h
+	<xol.h>
+	<stdctrls.h>
+
+1349892563 /home/user/Projects/xwings/include/xol.h
+	"application.h"
+
+1385906613 /home/user/Projects/xwings/include/application.h
+	<locale.h>
+	"forms.h"
+
+1384685271 /home/user/Projects/xwings/include/forms.h
+	"cursor.h"
+	"sysobj.h"
+
+1365963337 /home/user/Projects/xwings/include/cursor.h
+	"xgdi.h"
+
+1385579665 /home/user/Projects/xwings/include/xgdi.h
+	"graphics.h"
+
+1385655731 /home/user/Projects/xwings/include/graphics.h
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	<X11/extensions/Xfixes.h>
+	<X11/extensions/Xrender.h>
+	"tobj.h"
+
+1380826786 /home/user/Projects/xwings/include/tobj.h
+	"rtti.h"
+
+1380827964 /home/user/Projects/xwings/include/rtti.h
+	<typeinfo>
+	"types.h"
+
+1380981199 /home/user/Projects/xwings/include/types.h
+	<algorithm>
+	<map>
+	<set>
+	<string>
+	<iostream>
+	<sstream>
+	<list>
+	<exception>
+	<limits.h>
+	<stdlib.h>
+	"property.hpp"
+	"delegate.hpp"
+
+1385753980 /home/user/Projects/xwings/include/property.hpp
+
+1237398598 /home/user/Projects/xwings/include/delegate.hpp
+	<memory.h>
+
+1380981199 /home/user/Projects/xwings/include/sysobj.h
+	<pthread.h>
+	<signal.h>
+	"tobj.h"
+
+1384073796 /home/user/Projects/xwings/include/stdctrls.h
+	"xgdi.h"
+	"comctrls.h"
+	"menu.h"
+
+1384073654 /home/user/Projects/xwings/include/comctrls.h
+	"xgdi.h"
+	"application.h"
+
+1366486137 /home/user/Projects/xwings/include/menu.h
+	"forms.h"
+
+1383593878 /home/user/Projects/xwings/examples/twoforms/second.h
+	<xol.h>
+	<stdctrls.h>
+
+1383593876 source:/home/user/Projects/xwings/examples/twoforms/second.cpp
+	"second.h"
+
+1383592114 source:/home/user/Projects/xwings/examples/twoforms/twoforms.cpp
+	"first.h"
+

@@ -204,7 +204,7 @@ void __fastcall TControl :: Assign(const TControl &a)
     OnMouseUp = a.OnMouseUp;
     OnMouseMove = a.OnMouseMove;
     OnMouseEnter = a.OnMouseEnter;
-    OnMouseExit = a.OnMouseExit;
+    OnMouseLeave = a.OnMouseLeave;
     OnStartDrag = a.OnStartDrag;
     OnEndDrag = a.OnEndDrag;
     OnDragOver = a.OnDragOver;
@@ -982,7 +982,7 @@ void __fastcall TControl :: MouseEnter(TShiftState state, int x, int y)
         OnMouseEnter(this, state, x, y);
 }
 //---------------------------------------------------------------------------
-void __fastcall TControl :: MouseExit(TShiftState state, int x, int y)
+void __fastcall TControl :: MouseLeave(TShiftState state, int x, int y)
 {
     StateOff(csMouseOver);
     StateOff(csMouseDown);
@@ -1006,8 +1006,8 @@ void __fastcall TControl :: MouseExit(TShiftState state, int x, int y)
     {
         DragAccept = DragOver(DragObject, state, x, y, dsDragExit);
     }
-    if(OnMouseExit)
-        OnMouseExit(this, state, x, y);
+    if(OnMouseLeave)
+        OnMouseLeave(this, state, x, y);
 }
 //---------------------------------------------------------------------------
 bool __fastcall TControl :: DispatchMessage(XEvent &event)
@@ -1198,7 +1198,7 @@ bool __fastcall TControl :: WndProc(XEvent &event)
                 if(tmpw)
                     tmpc = tmpw->ControlOnState(csMouseOver);
                 if(tmpc)
-                    tmpc->MouseExit(event.xmotion.state, x, y);
+                    tmpc->MouseLeave(event.xmotion.state, x, y);
                 MouseEnter(event.xmotion.state, x, y);
             }
             ret = true;
@@ -1218,7 +1218,7 @@ bool __fastcall TControl :: WndProc(XEvent &event)
         y = event.xbutton.y - Canvas.Origin.y;
         if(CheckState(csMouseOver))
         {
-            MouseExit(event.xcrossing.state, x, y);
+            MouseLeave(event.xcrossing.state, x, y);
             ret = true;
         }
         break;
