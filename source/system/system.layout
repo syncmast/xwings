@@ -1,40 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Release" />
-	<File name="../../include/vxutil.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../include/xstream.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="329" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../../include/types.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="29724" topLine="75" />
-		</Cursor>
-	</File>
-	<File name="types.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="20167" topLine="788" />
-		</Cursor>
-	</File>
-	<File name="sysobj.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="16327" topLine="519" />
-		</Cursor>
-	</File>
-	<File name="sysutils.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1412" topLine="7" />
-		</Cursor>
-	</File>
-	<File name="../../include/sysutils.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="466" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="../../include/tobj.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1534" topLine="49" />
+			<Cursor1 position="10719" topLine="282" />
 		</Cursor>
 	</File>
 	<File name="rtti.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -42,39 +11,14 @@
 			<Cursor1 position="2223" topLine="51" />
 		</Cursor>
 	</File>
-	<File name="lnxfile.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../include/types.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6906" topLine="212" />
+			<Cursor1 position="31114" topLine="1056" />
 		</Cursor>
 	</File>
-	<File name="xstream.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../include/vxutil.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2237" topLine="16" />
-		</Cursor>
-	</File>
-	<File name="vxutil.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="566" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="tobj.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1860" topLine="22" />
-		</Cursor>
-	</File>
-	<File name="../../include/property.hpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="14199" topLine="413" />
-		</Cursor>
-	</File>
-	<File name="../../include/socket.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="16390" topLine="491" />
-		</Cursor>
-	</File>
-	<File name="socket.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="11561" topLine="405" />
+			<Cursor1 position="329" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="../../include/lnxfile.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -82,14 +26,54 @@
 			<Cursor1 position="230" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="../../include/tobj.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1534" topLine="49" />
+		</Cursor>
+	</File>
+	<File name="tobj.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1860" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="../../include/sysutils.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="466" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="socket.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11561" topLine="405" />
+		</Cursor>
+	</File>
+	<File name="types.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18712" topLine="754" />
+		</Cursor>
+	</File>
+	<File name="sysobj.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="16327" topLine="519" />
+		</Cursor>
+	</File>
+	<File name="../../include/property.hpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14199" topLine="413" />
+		</Cursor>
+	</File>
 	<File name="../../include/rtti.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="466" topLine="45" />
 		</Cursor>
 	</File>
-	<File name="../../include/xstream.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="xstream.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="10719" topLine="282" />
+			<Cursor1 position="2237" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="sysutils.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1137" topLine="19" />
 		</Cursor>
 	</File>
 	<File name="../../include/sysobj.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -97,5 +81,19 @@
 			<Cursor1 position="5703" topLine="195" />
 		</Cursor>
 	</File>
-	<EditorTabsLayout layout="0c9300e054ec850500543a8000000002=0;xw.sys:../../include/vxutil.h,1;xw.sys:../../include/types.h,2;xw.sys:types.cpp,3;xw.sys:../../include/lnxfile.h,4;xw.sys:sysobj.cpp,5;xw.sys:socket.cpp,6;xw.sys:../../include/xstream.h,7;xw.sys:../../include/rtti.h,8;xw.sys:../../include/socket.h,9;xw.sys:../../include/tobj.h,10;xw.sys:tobj.cpp,11;xw.sys:rtti.cpp,12;xw.sys:../../include/sysobj.h,13;xw.sys:../../include/property.hpp,14;xw.sys:sysutils.cpp,15;xw.sys:../../include/sysutils.h,16;xw.sys:lnxfile.cpp,17;xw.sys:xstream.cpp,18;xw.sys:vxutil.cpp,19;xw.gdi:../../include/comctrls.h,20;xw.gdi:../../include/xgdi.h,21;xw.gdi:application.cpp,22;xw.gdi:xgdi.cpp,23;xw.gdi:../../include/application.h,24;xw.gdi:graphics.cpp,25;xw.gdi:../../include/graphics.h,26;xw.gdi:netwm.cpp,27;xw.gdi:../../include/netwm.h,28;xw.gdi:menu.cpp,29;xw.gdi:grctrls.cpp,30;xw.gdi:forms.cpp,31;xw.gdi:../../include/forms.h,32;xw.gdi:comctrls.cpp,33;xw.gdi:cursor.cpp,34;xw.gdi:../../include/xwrender.h,35;xw.gdi:xwrender.cpp,36;xw.gdi:../../include/menu.h,37;xw.gdi:../../include/grctrls.h,38;xw.gdi:../../include/cursor.h,39;xw.gdi:extctrls.cpp,40;xw.img:imgfmt.cpp,41;xw.img:grutils.cpp,42;xw.img:gif.cpp,43;stdctrls:../../include/xpainter.h,44;stdctrls:stdctrls.cpp,45;stdctrls:xpainter.cpp,46;stdctrls:zoomler.cpp,47;stdctrls:../../include/stdctrls.h,48;stdctrls:scrollbar.cpp,49;stdctrls:../../include/scrollbar.h,50;stdctrls:stdgraph.cpp,51;stdctrls:../../include/stdgraph.h,52;stdctrls:../../include/label.h,*53;stdctrls:label.cpp,54;progtest:TestForm.cpp,55;progtest:MainTest.cpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=599;besth=250;minw=599;minh=250;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0c9300e054ec850500543a8000000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
+	<File name="lnxfile.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6906" topLine="212" />
+		</Cursor>
+	</File>
+	<File name="vxutil.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="566" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../../include/socket.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="16390" topLine="491" />
+		</Cursor>
+	</File>
 </CodeBlocks_layout_file>

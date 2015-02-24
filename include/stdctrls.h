@@ -27,7 +27,7 @@ enum TEdgeBorder {ebLeft = (1 << 0),
 TRect DrawButtonFace(TCanvas *canvas, const TRect &Client, bool IsDown, bool IsFocused, bool Flat, TColor FillColor);
 void DrawDisabledText (TCanvas *Canvas, const TString &text, TRect &rect, TFormatText *format = NULL);
 void DrawEdge(TCanvas *canvas, const TRect &rect, TEdgeStyle EdgeInner, TEdgeStyle EdgeOuter, int EdgeBorders, int EdgeWidth = 0);
-void Frame3D(TCanvas *canvas, const TRect &arect, TColor topcolor, TColor bottomcolor, int dwidth);
+void Frame3D(TCanvas *canvas, const TRect &arect, TColor topcolor, TColor bottomcolor, int dwidth = 1);
 //---------------------------------------------------------------------------
 //  MenuItem
 //---------------------------------------------------------------------------

@@ -34,6 +34,7 @@ History :
   3rd Release : I don't know
   4th Release : Maximo Yarritu Arnaez : myarritu@gmx.net
 -------------------------------------------------------------------------------*/
+#include "stdctrls.h"
 #include "label.h"
 
 #define HTTP "http://"
@@ -265,24 +266,13 @@ void TmyaSuperLabel :: Paint()
     int ALength;
     TPoint AuxPoint;
     TString AuxCaption;
-    //{ Useful to draw the bevel around the TEdit }
-  procedure BevelRect(Color1, Color2: TColor; const R: TRect);
-  begin
-    with Canvas do
-    begin
-      Pen.Color := Color1;
-      PolyLine([Point(R.Left, R.Bottom), Point(R.Left, R.Top), Point(R.Right, R.Top)]);
-      Pen.Color := Color2;
-      PolyLine([Point(R.Right, R.Top), Point(R.Right, R.Bottom), Point(R.Left, R.Bottom)]);
-    end;
-  end;
-{
-    FromR = TColorQuad(fBeginColor).Red;
-    FromG = TColorQuad(fBeginColor).Green;
-    FromB = TColorQuad(fBeginColor).Blue;
-    DiffR = TColorQuad(fEndColor).Red-FromR;
-    DiffG = TColorQuad(fEndColor).Green-FromG;
-    DiffB = TColorQuad(fEndColor).Blue-FromB;
+
+    FromR = TColorQuad(m_BeginColor).Red;
+    FromG = TColorQuad(m_BeginColor).Green;
+    FromB = TColorQuad(m_BeginColor).Blue;
+    DiffR = TColorQuad(m_EndColor).Red-FromR;
+    DiffG = TColorQuad(m_EndColor).Green-FromG;
+    DiffB = TColorQuad(m_EndColor).Blue-FromB;
 /*    { FromR := FBeginColor and $000000ff;
     FromG := (FBeginColor shr 8) and $000000ff;
     FromB := (FBeginColor shr 16) and $000000ff;
@@ -290,7 +280,7 @@ void TmyaSuperLabel :: Paint()
     DiffG := ((FEndColor shr 8) and $000000ff) - FromG;
     DiffB := ((FEndColor shr 16) and $000000ff) - FromB; } */
  //   { Depending on gradient style selected, go draw it on the Bitmap canvas }
-    switch(FGradientStyle)
+    switch(m_GradientStyle)
     {
         case gsHorizontal: DoHorizontal(FromR, FromG, FromB, DiffR, DiffG, DiffB); break;
         case gsVertical: DoVertical(FromR, FromG, FromB, DiffR, DiffG, DiffB); break;
@@ -310,14 +300,14 @@ void TmyaSuperLabel :: Paint()
     Area = ClientRect;
     if(Frame)
     {
-        BevelRect(clBtnShadow, clBtnShadow, Rect(Area.Left+1, Area.Top+1, Area.Right-1, Area.Bottom-1));
-        BevelRect(clBtnHighlight, clBtnHighlight, Rect(Area.Left, Area.Top, Area.Right-2, Area.Bottom-2));
+        Frame3D(&Canvas, TRect(Area.left+1, Area.top+1, Area.width-1, Area.height-1), clBtnShadow, clBtnShadow);
+        Frame3D(&Canvas, TRect(Area.left, Area.top, Area.width-2, Area.height-2), clBtnHighlight, clBtnHighlight);
     }
-    Area = Rect(Area.Left,Area.Top,Area.Right,Area.Bottom-2);
+    Area = TRect(Area.left,Area.top,Area.width,Area.height-2);
     DoDrawText(Area, (DT_EXPANDTABS or DT_WORDBREAK) or Alignments[Alignment]);
 
 //  { Depending on Line Style line is drawn }
-  ALength = (Area.Right-Area.left-4) / 2;
+  ALength = (Area.right() - Area.left - 4) / 2;
     switch(LineStyle)
     {
         case lsTop:
@@ -325,27 +315,27 @@ void TmyaSuperLabel :: Paint()
             AuxPoint.y = Area.top + 2;
             DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
             AuxPoint.y = AuxPoint.y + 1;
-            DrawLeftFadeLine(AuxPoint, ALength, ALength /3 3, clBtnHighLight);
+            DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighlight);
             AuxPoint.y = AuxPoint.y - 1;
             AuxPoint.x = AuxPoint.x + ALength;
-            DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnShadow);
+            DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
             AuxPoint.y = AuxPoint.y + 1;
-            DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
+            DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighlight);
             break;
         case lsBottom:
             AuxPoint.x = Area.left + 2;
             AuxPoint.y = Area.bottom() - 3;
             DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
             AuxPoint.y += 1;
-            DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
+            DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighlight);
             AuxPoint.y -= 1;
             AuxPoint.x += ALength;
             DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
             AuxPoint.y += 1;
-            DrawRightFadeLine(AuxPoint, ALength, ALength div 3, clBtnHighLight);
+            DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighlight);
             break;
         case lsMiddle:
-            AuxPoint.y = Area.Top + (Area.Bottom - Area.Top) / 2;
+            AuxPoint.y = Area.top + (Area.bottom() - Area.top) / 2;
             AuxCaption = Caption;
             if(LabelType == ltSubSuperScript)
                 AuxCaption = ExtractCaption(Caption);
@@ -353,29 +343,29 @@ void TmyaSuperLabel :: Paint()
             {
                 case taCenter:
                     AuxPoint.x = Area.left + 2;
-                    ALength = ((Area.Right - 2) - (Area.Left + 2) - Canvas.TextWidth(AuxCaption) - 12) / 2;
+                    ALength = ((Area.right() - 2) - (Area.left + 2) - Canvas.TextWidth(AuxCaption) - 12) / 2;
                     DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
                     AuxPoint.y += 1;
-                    DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
-                    AuxPoint.x = Area.Right - 2 - ALength;
+                    DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighlight);
+                    AuxPoint.x = Area.right() - 2 - ALength;
                     AuxPoint.y -= 1;
                     DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
                     AuxPoint.y += 1;
-                    DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
+                    DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighlight);
                     break;
                 case taLeftJustify:
                     AuxPoint.x = Area.left + Canvas.TextWidth(AuxCaption) + 6;
-                    ALength = Area.Right - AuxPoint.x - 2;
+                    ALength = Area.right() - AuxPoint.x - 2;
                     DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
                     AuxPoint.y += 1;
-                    DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
+                    DrawRightFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighlight);
                     break;
                 case taRightJustify:
                     AuxPoint.x = Area.left + 2;
-                    ALength = Area.Right - Canvas.TextWidth(AuxCaption) - 6 - AuxPoint.x;
+                    ALength = Area.right() - Canvas.TextWidth(AuxCaption) - 6 - AuxPoint.x;
                     DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnShadow);
                     AuxPoint.y += 1;
-                    DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighLight);
+                    DrawLeftFadeLine(AuxPoint, ALength, ALength / 3, clBtnHighlight);
                     break;
             }
     }
@@ -391,9 +381,9 @@ void TmyaSuperLabel :: set_ShadeRightBottom(TColor value)
 
 void TmyaSuperLabel :: set_FitType(TFitType value)
 {
-    if(fFitType == value)
+    if(m_FitType == value)
         return;
-    fFitType = value;
+    m_FitType = value;
     fOldSize = fOldSize + 1;
     Invalidate();
 }
@@ -442,7 +432,7 @@ void TmyaSuperLabel :: set_ShadeLT(bool value)
         m_ShadeLeftTop = clWhite;
     }
     else
-        m_ShadeLeftTop = Flast;
+        m_ShadeLeftTop = fLast;
     Invalidate();
 }
 
@@ -487,7 +477,7 @@ void TmyaSuperLabel :: MouseEnter(TShiftState state, int x, int y)
 
 void TmyaSuperLabel :: MouseLeave(TShiftState state, int x, int y)
 {
-    if(LabelType > ltSubSuperScript)
+    if(m_LabelType > ltSubSuperScript)
     {
         if(Effect98)
         {
@@ -504,7 +494,7 @@ void TmyaSuperLabel :: set_LabelType(TLabelType value)
     if(m_LabelType == value)
         return;
     m_LabelType = value;
-    if(m_LabelType in [ltHttp, ltFtp, ltNews, ltMail])
+    if(m_LabelType > ltSubSuperScript)
         Cursor = crHandPoint;
     else
         Cursor = crDefault;
@@ -544,14 +534,14 @@ void TmyaSuperLabel :: Click()
         Choice = Caption;
     else
         Choice = Url;
-    switch(LabelType)
+    switch(m_LabelType)
     {
         case ltHttp: App = HTTP + Choice; break;
         case ltFtp: App = FTP + Choice; break;
         case ltNews: App = NEWS + Choice; break;
         case ltMail: App = MAIL + Choice + "?subject=" + MailSubject;
     }
-    if(LabelType in [ltHttp, ltFtp, ltNews, ltMail])
+    if(m_LabelType > ltSubSuperScript)
     {
         StrPCopy(TempPChar,App);
         OpenObject(TempPChar);
@@ -584,20 +574,20 @@ void TmyaSuperLabel :: DrawLeftFadeLine(TPoint &APoint, int ALength, int AFadeWi
     B1 = TColorQuad(C).Blue;
   for(register int I = APoint.X; I <= APoint.X + ALength; I++)
   {
-    if(I < (APoint.X + AFadeWidth))
+    if(I < (APoint.x + AFadeWidth))
     {
-      C = Canvas.Pixels[I, APoint.Y];
+      C = Canvas.Pixels[I, APoint.y];
       R2 = TColorQuad(C).Red;
       G2 = TColorQuad(C).Green;
       B2 = TColorQuad(C).Blue;
-      R2 = R2+(((R1-R2)*(I-APoint.X)) div AFadeWidth);
-      G2 = G2+(((G1-G2)*(I-APoint.X)) div AFadeWidth);
-      B2 = B2+(((B1-B2)*(I-APoint.X)) div AFadeWidth);
+      R2 = R2+(((R1-R2)*(I-APoint.x)) / AFadeWidth);
+      G2 = G2+(((G1-G2)*(I-APoint.x)) / AFadeWidth);
+      B2 = B2+(((B1-B2)*(I-APoint.x)) / AFadeWidth);
       C = RGB(R2, G2, B2);
-      Canvas.Pixels[I,APoint.Y] = C;
+      Canvas.Pixels[I,APoint.y] = C;
     }
     else
-        Canvas.Pixels[I,APoint.Y] = AFadeColor;
+        Canvas.Pixels[I,APoint.y] = AFadeColor;
   }
 }
 
@@ -610,22 +600,22 @@ void TmyaSuperLabel :: DrawRightFadeLine(TPoint &APoint, int ALength, int AFadeW
     R1 = TColorQuad(C).Red;
     G1 = TColorQuad(C).Green;
     B1 = TColorQuad(C).Blue;
-    for(register int I = APoint.X; I <= APoint.X + ALength; I++)
+    for(register int I = APoint.x; I <= APoint.x + ALength; I++)
     {
-        if(I > (APoint.X + Alength-AFadeWidth))
+        if(I > (APoint.x + Alength-AFadeWidth))
         {
-            C = Canvas.Pixels[I, APoint.Y];
+            C = Canvas.Pixels[I, APoint.y];
             R2 = TColorQuad(C).Red;
             G2 = TColorQuad(C).Green;
             B2 = TColorQuad(C).Blue;
-            R2 = R2+(((R1-R2)*(APoint.X+ALength-I)) div AFadeWidth);
-            G2 = G2+(((G1-G2)*(APoint.X+ALength-I)) div AFadeWidth);
-            B2 = B2+(((B1-B2)*(APoint.X+ALength-I)) div AFadeWidth);
+            R2 = R2+(((R1-R2)*(APoint.x+ALength-I)) / AFadeWidth);
+            G2 = G2+(((G1-G2)*(APoint.x+ALength-I)) / AFadeWidth);
+            B2 = B2+(((B1-B2)*(APoint.x+ALength-I)) / AFadeWidth);
             C = RGB(R2, G2, B2);
-            Canvas.Pixels[I,APoint.Y] := C;
+            Canvas.Pixels[I,APoint.y] = C;
         }
         else
-            Canvas.Pixels[I,APoint.Y] = AFadeColor;
+            Canvas.Pixels[I,APoint.y] = AFadeColor;
     }
 }
 
@@ -669,11 +659,11 @@ void TmyaSuperLabel :: DoVertical(int fr, int fg, int fb, int dr, int dg, int db
     byte_t R, G, B;
 
     ColorRect.left = 0;                    //{ Set rectangle left & right }
-    ColorRect.Right = Width;
+    ColorRect.width = Width;
     for(I = 0; I <= 255; I++)
     {                                   //{ Make lines (rectangles) of color }
         ColorRect.top = MulDiv(I, Height, 256);        //{ Find top for this color }
-        ColorRect.Bottom = MulDiv(I+1, Height, 256);   // { Find Bottom }
+        ColorRect.height = MulDiv(I+1, Height, 256);   // { Find Bottom }
         R = fr + MulDiv(I, dr, 255);                   // { Find the RGB values }
         G = fg + MulDiv(I, dg, 255);
         B = fb + MulDiv(I, db, 255);
@@ -685,7 +675,7 @@ void TmyaSuperLabel :: DoVertical(int fr, int fg, int fb, int dr, int dg, int db
 void TmyaSuperLabel :: DoElliptic(int fr, int fg, int fb, int dr, int dg, int db)
 {
     byte_t R, G, B;
-    Pw, Ph, x1,y1,x2,y2: Real;
+    float Pw, Ph, x1,y1,x2,y2;
     int I, cWidth, cHeight;
 /*The elliptic is a bit different, since I had to use real numbers. I cut down
  on the number (to 155 instead of 255) of iterations in an attempt to speed
@@ -792,7 +782,7 @@ void TmyaSuperLabel :: DoHorizCenter(int fr, int fg, int fb, int dr, int dg, int
     cHeight = Height;
     Haf = cWidth / 2;
     ColorRect.top = 0;
-    ColorRect.Bottom = cHeight;
+    ColorRect.height = cHeight;
   for(I = 0; I <= Haf; I++)
   {
     ColorRect.left = MulDiv (I, Haf, Haf);

@@ -1087,6 +1087,10 @@ inline TString Now()
 {
     return TimeToString(time(NULL));
 };
+inline int __fastcall MulDiv(int Number, int Numerator, int Denominator)
+{
+    return (Number * Numerator) / Denominator;
+};
 //---------------------------------------------------------------------------
 }  //namespace
 //---------------------------------------------------------------------------

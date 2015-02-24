@@ -107,8 +107,8 @@ private:
     void DoRectangle(int fr, int fg, int fb, int dr, int dg, int db); // are color values.
     void DoVertCenter(int fr, int fg, int fb, int dr, int dg, int db);
     void DoHorizCenter(int fr, int fg, int fb, int dr, int dg, int db);
-    void DrawLeftFadeLine(TPoint APoint, int ALength, int AFadeWidth, TColor AFadeColor);
-    void DrawRightFadeLine(TPoint APoint, int ALength, int AFadeWidth, TColor AFadeColor);
+    void DrawLeftFadeLine(TPoint &APoint, int ALength, int AFadeWidth, TColor AFadeColor);
+    void DrawRightFadeLine(TPoint &APoint, int ALength, int AFadeWidth, TColor AFadeColor);
 
     void Init();
     __fastcall void Assign(const TmyaSuperLabel &obj);
