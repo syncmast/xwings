@@ -6,8 +6,7 @@
 
 typedef word_t TShortCut;
 //---------------------------------------------------------------------------
-namespace xwings
-{
+namespace xwings {
 //---------------------------------------------------------------------------
 TShortCut ShortCut(word_t key, TShiftState shift);
 void ShortCutToKey(TShortCut ShortCut, word_t &key, TShiftState &shift);
@@ -330,11 +329,11 @@ private:
 protected:
     virtual void Init();
     virtual void DoShow();
-    virtual void Measure(uint_t &width, uint_t &height);
+    virtual void __fastcall Measure(uint_t &width, uint_t &height);
 
-    virtual void MouseEnter(TShiftState state, int x, int y);
-    virtual void MouseLeave(TShiftState state, int x, int y);
-    virtual void MouseMove(TShiftState state, int x, int y);
+    virtual void __fastcall MouseEnter(TShiftState state, int x, int y);
+    virtual void __fastcall MouseLeave(TShiftState state, int x, int y);
+    virtual void __fastcall MouseMove(TShiftState state, int x, int y);
     virtual void DoEnter();
     virtual void DoExit();
 
@@ -401,8 +400,8 @@ private:
 protected:
     virtual void Init();
     virtual void DoShow();
-    virtual void MouseDown(TMouseButton button, TShiftState state, int x, int y);
-    void Measure(uint_t &width, uint_t &height);
+    virtual void __fastcall MouseDown(TMouseButton button, TShiftState state, int x, int y);
+    virtual void __fastcall Measure(uint_t &width, uint_t &height);
 
 public:
     __fastcall TCustomMainMenu();

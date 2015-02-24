@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="gif.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="345" />
-		</Cursor>
-	</File>
 	<File name="imgfmt.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="44264" topLine="1370" />
@@ -16,4 +12,10 @@
 			<Cursor1 position="397" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="gif.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="345" />
+		</Cursor>
+	</File>
+	<EditorTabsLayout layout="0c9300e054ec850500543a8000000002=0;xw.img:imgfmt.cpp,1;xw.img:grutils.cpp,2;xw.img:gif.cpp,3;stdctrls:../../include/xpainter.h,4;stdctrls:stdctrls.cpp,5;stdctrls:xpainter.cpp,6;stdctrls:zoomler.cpp,7;stdctrls:../../include/stdctrls.h,8;stdctrls:scrollbar.cpp,9;stdctrls:../../include/scrollbar.h,10;stdctrls:stdgraph.cpp,11;stdctrls:../../include/stdgraph.h,12;stdctrls:../../include/label.h,*13;stdctrls:label.cpp,14;progtest:TestForm.cpp,15;progtest:MainTest.cpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=599;besth=250;minw=599;minh=250;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0c9300e054ec850500543a8000000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
 </CodeBlocks_layout_file>

@@ -40,8 +40,8 @@ History :
 #define MAIL "mailto:"
 #define FTP  "ftp://"
 #define NEWS "news://"
-#define SUB  "_"
-#define SUPER "^"
+#define SUB  '_'
+#define SUPER '^'
 //---------------------------------------------------------------------------
 namespace xwings {
 //---------------------------------------------------------------------------
@@ -75,7 +75,7 @@ __fastcall const TmyaSuperLabel & TmyaSuperLabel :: operator=(const TmyaSuperLab
 //---------------------------------------------------------------------------
 void TmyaSuperLabel :: Init()
 {
-    m_Effect3D = Normal3d;
+    m_Effect3D = Normal3D;
   Transparent = true;
   m_ShadeRightBottom = clGray;
   m_ShadeLeftTop = clWhite;
@@ -104,89 +104,85 @@ __fastcall void TmyaSuperLabel :: Assign(const TmyaSuperLabel &obj)
 //---------------------------------------------------------------------------
 void TmyaSuperLabel :: DoDrawText(const TRect &Area, word_t Flags)
 {
-    char *Text;
+    TString text;
     byte_t Size;
     TRect TmpRect;
     TColor UpperColor, LowerColor;
 
-    Size = GetTextLen;     // Get length of string in Edit1
-    Size++;              // Add room for null character
-  GetMem(Text, Size);
-  GetTextBuf(Text, Size); // Creates Buffer dynamic variable
+  text = Caption;
   if( (Flags and DT_CALCRECT) and
-     ((Text[0]=='\0') or ShowAccelChar and (Text[0]=='&') and (Text[1]=='\0')) )
-      StrCopy(Text, ' ');
+     ((text[0]=='\0') or (ShowAccelChar and (text[0]=='&') and (text[1]=='\0'))) )
+      text =  " ";
   if(!ShowAccelChar)
     Flags = Flags | DT_NOPREFIX;
   Canvas.Font = Font;
     switch(m_Effect3D)
     {
-        case Resit3d:
+        case Resit3D:
                 UpperColor = m_ShadeRightBottom;
                 LowerColor = m_ShadeLeftTop;
                 TmpRect = Area;
                 OffsetRect(TmpRect, 1, 1);
                 Canvas.Font->Color = LowerColor;
-                NewDrawText(Text, TmpRect, Flags);
+                NewDrawText(text, TmpRect, Flags);
                 TmpRect = Area;
                 OffsetRect(TmpRect, -1, -1);
                 Canvas.Font->Color = UpperColor;
-                NewDrawText(Text, TmpRect, Flags);
+                NewDrawText(text, TmpRect, Flags);
                 break;
-        case Raised3d:
+        case Raised3D:
                 UpperColor = m_ShadeLeftTop;
                 LowerColor = m_ShadeRightBottom;
                 TmpRect = Area;
                 OffsetRect(TmpRect, 1, 1);
                 Canvas.Font->Color = LowerColor;
-                NewDrawText(Text, TmpRect, Flags);
+                NewDrawText(text, TmpRect, Flags);
                 TmpRect = Area;
                 OffsetRect(TmpRect, -1, -1);
                 Canvas.Font->Color = UpperColor;
-                NewDrawText(Text, TmpRect, Flags);
+                NewDrawText(text, TmpRect, Flags);
                 break;
         case Shadowed3D:
                 UpperColor = m_ShadeLeftTop;
                 LowerColor = m_ShadeRightBottom;
                 TmpRect = Area;
-                OffsetRect(TmpRect, m_AHShadeOffset, FvOffSet);
+                OffsetRect(TmpRect, m_AHShadeOffset, m_AVShadeOffset);
                 Canvas.Font->Color = LowerColor;
-                NewDrawText(Text, TmpRect, Flags);
+                NewDrawText(text, TmpRect, Flags);
                 break;
   };
   Canvas.Font->Color = Font->Color;
   if(!AutoSize)
-    if((fOldSize<>Canvas.Font.Size) or (fOldWidth != Width) or (fOldHeight != Height))
+    if((fOldSize != Canvas.Font->Size) or (fOldWidth != Width) or (fOldHeight != Height))
     {
         switch(m_FitType)
         {
             case ftBestFitBoth:
                 Canvas.Font->Size = 0;
-                while((abs(Canvas.Font->height) < Area.bottom() - 6) and (Canvas.TextWidth(TString(text)) < Area.right()))
+                while((abs(Canvas.Font->Height) < Area.bottom() - 6) and (Canvas.TextWidth(TString(text)) < Area.right()))
                     Canvas.Font->Size = Canvas.Font->Size + 1;
                 Canvas.Font->Size = Canvas.Font->Size - 1;
-                Font.Size = Canvas.Font.Size;
+                Font->Size = Canvas.Font->Size;
                 break;
-            case ftBestFitVert: Font.Height = Area.bottom() - 2; break;
+            case ftBestFitVert: Font->Height = Area.bottom() - 2; break;
             case ftBestFitHorz:
                 Canvas.Font->Size = 0;
                 while(Canvas.TextWidth(TString(Text)) < Area.right())
-                    Canvas.Font.Size = Canvas.Font.Size + 1;
-                Canvas.Font.Size = Canvas.Font.Size - 1;
-                Font.Size = Canvas.Font.Size;
+                    Canvas.Font->Size = Canvas.Font->Size + 1;
+                Canvas.Font->Size = Canvas.Font->Size - 1;
+                Font->Size = Canvas.Font->Size;
                 break;
       };
-      fOldSize = Canvas.Font.Size;
+      fOldSize = Canvas.Font->Size;
       fOldWidth = Width;
       fOldHeight = Height;
     };
   if(!Enabled)
-    Canvas.Font.Color = clGrayText;
-  NewDrawText(Text, Area, Flags);
-  FreeMem(Text, Size);
+    Canvas.Font->Color = clGrayText;
+  NewDrawText(text, Area, Flags);
 }
 
-void TmyaSuperLabel :: NewDrawText(char *Text, TRect &Area, word_t Flags)
+void TmyaSuperLabel :: NewDrawText(const TString &Text, const TRect &Area, word_t Flags)
 {
     int nFor, XChar;
     bool SubScript, SuperScript;
@@ -195,23 +191,23 @@ void TmyaSuperLabel :: NewDrawText(char *Text, TRect &Area, word_t Flags)
     if(LabelType == ltSubSuperScript)
     {
             //{ the font is changed when a SubScript or SuperScript is drawn }
-        DefaultFont := TFont.Create;
-        DefaultFont.Assign(Canvas.Font);
+//        DefaultFont := TFont.Create;
+        DefaultFont = *Canvas.Font;
             //{ Calculate the X position for each char }
         switch(Alignment)
         {
-            case taRightJustify: XChar = Area.Right - Canvas.TextWidth(ExtractCaption(Text)); break;
-            case taLeftJustify: XChar = Area.Left; break;
-            case taCenter: XChar = Area.Left + (Area.Right-Canvas.TextWidth(ExtractCaption(Text))) / 2;
+            case taRightJustify: XChar = Area.right() - Canvas.TextWidth(ExtractCaption(Text)); break;
+            case taLeftJustify: XChar = Area.left; break;
+            case taCenter: XChar = Area.left + (Area.right() - Canvas.TextWidth(ExtractCaption(Text))) / 2;
         };
             //{ Each char is drawn taking into account the previous char which indicates the way of drawing }
-        for(nFor = 0; nFor < Length(Text); nFor++)
+        for(nFor = 0; nFor < Text.Length(); nFor++)
         {
-            if((nFor > 0) and (Text[nFor-1]=SUB))
+            if((nFor > 0) and (Text[nFor-1] == SUB))
                 SubScript = true;
             else
                 SubScript = false;
-            if((nFor>0) and (Text[nFor-1]=SUPER))
+            if((nFor>0) and (Text[nFor-1] == SUPER))
                 SuperScript = true;
             else
                 SuperScript = false;
@@ -220,41 +216,42 @@ void TmyaSuperLabel :: NewDrawText(char *Text, TRect &Area, word_t Flags)
                 if(SubScript)
                 {
                     //{ Recalculate the height font }
-                    Canvas.Font.Height = Canvas.Font.Height * 8 / 10;
+                    Canvas.Font->Height = Canvas.Font->Height * 8 / 10;
                     //{ Calculate de X position to draw the char }
-                    Canvas.TextRect(Rect(XChar,Area.Top,XChar+Canvas.TextWidth(Text[nFor]),Area.Bottom),
+                    Canvas.TextRect(TRect(XChar,Area.top,XChar + Canvas.TextWidth(Text[nFor]),Area.bottom()),
                           XChar,
-                          Area.Top+Abs(8*Canvas.Font.Height-10*DefaultFont.Height) / 10, Text[nFor]);
+                          Area.top + abs(8*Canvas.Font->Height-10*DefaultFont.Height) / 10, Text[nFor]);
                     //{ Calculate the next X position }
-                    XChar = XChar+Canvas.TextWidth(Text[nFor]);
+                    XChar = XChar + Canvas.TextWidth(Text[nFor]);
                 };
                 if(SuperScript)
                 {
                     //{ Recalculate the height font }
-                    Canvas.Font.Height = Canvas.Font.Height*8 / 10;
+                    Canvas.Font->Height = Canvas.Font->Height * 8 / 10;
                     //{ Calculate de X position to draw the char }
-                    Canvas.TextRect(Rect(XChar,Area.Top,XChar+Canvas.TextWidth(text[nFor]),Area.Bottom),
+                    Canvas.TextRect(TRect(XChar,Area.top,XChar + Canvas.TextWidth(Text[nFor]),Area.bottom()),
                           XChar,
-                          Area.Top-Abs(8*Canvas.Font.Height-10*DefaultFont.Height) / 20, Text[nFor]);
+                          Area.top - abs(8*Canvas.Font->Height-10*DefaultFont.Height) / 20, Text[nFor]);
                     //{ Calculate the next X position }
                     XChar = XChar + Canvas.TextWidth(Text[nFor]);
                 };
                 if((!SubScript) and (!SuperScript))
                 {
                     //{ if the actual font is different the default font is loaded }
-                    Canvas.Font.Assign(DefaultFont);
-                    Canvas.TextRect(Rect(XChar,Area.Top,XChar+Canvas.TextWidth(Text[nFor]),Area.Bottom),
+                    *Canvas.Font = DefaultFont;
+                    Canvas.TextRect(TRect(XChar,Area.top, XChar + Canvas.TextWidth(Text[nFor]), Area.bottom()),
                           XChar,
-                          Area.Top,
+                          Area.top,
                           Text[nFor]);
-                    XChar = XChar+Canvas.TextWidth(Text[nFor]);
+                    XChar = XChar + Canvas.TextWidth(Text[nFor]);
                 };
-                Canvas.Font.Assign(DefaultFont);
+                *Canvas.Font = DefaultFont;
             };
         };
     }
     else
-        DrawText(Canvas.Handle, Text, StrLen(Text), Area, Flags);
+//        DrawText(Canvas.Handle, Text, StrLen(Text), Area, Flags);
+        DrawText(Area, Text, TFormatText *format = NULL);
 }
 
 void TmyaSuperLabel :: Paint()

@@ -51,9 +51,9 @@ namespace xwings {
  - Raised3d : raised TLabel
  - Shadowed3d : shadowed TLabel with selectable direction
 -------------------------------------------------------------------------------*/
-enum T3DEffect { Normal3d, Resit3d, Raised3d, Shadowed3d };
+enum T3DEffect { Normal3D, Resit3D, Raised3D, Shadowed3D };
 // Fit Type inside rectagle
-enum TFitType { ftNormalFit, ftBestFitVert, ftBestFithorz, ftBestFitBoth };
+enum TFitType { ftNormalFit, ftBestFitVert, ftBestFitHorz, ftBestFitBoth };
 // Gradient Style: If gsNone is selected no gradient style is applied
 enum TGradientStyle { gsNone, gsHorizontal, gsVertical, gsElliptic, gsRectangle,
                     gsVertCenter, gsHorizCenter };
@@ -96,10 +96,10 @@ private:
     void set_Frame(bool value);
     void set_LineStyle(TLineStyle value);
 
-    void MouseEnter(TShiftState state, int x, int y);
-    void MouseLeave(TShiftState state, int x, int y);
+    void __fastcall MouseEnter(TShiftState state, int x, int y);
+    void __fastcall MouseLeave(TShiftState state, int x, int y);
     void DoDrawText(const TRect &Area, word_t Flags);
-    void NewDrawText(char *text, TRect &area, word_t flags);
+    void NewDrawText(const TString &text, const TRect &area, word_t flags);
     TString ExtractCaption(TString value);
     void DoHorizontal(int fr, int fg, int fb, int dr, int dg, int db); //These all draw
     void DoVertical(int fr, int fg, int fb, int dr, int dg, int db);  // the gradients.

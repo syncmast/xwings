@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="../../include/zoomler.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="zoomler.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2511" topLine="48" />
-		</Cursor>
-	</File>
-	<File name="stdctrls.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="46341" topLine="1565" />
+			<Cursor1 position="6052" topLine="204" />
 		</Cursor>
 	</File>
 	<File name="../../include/scrollbar.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -16,39 +12,14 @@
 			<Cursor1 position="2719" topLine="77" />
 		</Cursor>
 	</File>
-	<File name="../../include/stdctrls.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="stdctrls.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="355" topLine="0" />
+			<Cursor1 position="46341" topLine="1565" />
 		</Cursor>
 	</File>
-	<File name="zoomler.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="../../include/zoomler.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6052" topLine="204" />
-		</Cursor>
-	</File>
-	<File name="label.cpp" open="1" top="1" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4086" topLine="100" />
-		</Cursor>
-	</File>
-	<File name="../../include/stdgraph.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="865" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="xpainter.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2259" topLine="65" />
-		</Cursor>
-	</File>
-	<File name="../../include/label.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6002" topLine="109" />
-		</Cursor>
-	</File>
-	<File name="stdgraph.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1823" topLine="132" />
+			<Cursor1 position="2511" topLine="48" />
 		</Cursor>
 	</File>
 	<File name="../../include/xpainter.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -56,9 +27,40 @@
 			<Cursor1 position="1301" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="../../include/stdgraph.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="865" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="../../include/stdctrls.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="355" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="scrollbar.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="14888" topLine="475" />
 		</Cursor>
 	</File>
+	<File name="stdgraph.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1823" topLine="132" />
+		</Cursor>
+	</File>
+	<File name="../../include/label.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6002" topLine="109" />
+		</Cursor>
+	</File>
+	<File name="xpainter.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2259" topLine="65" />
+		</Cursor>
+	</File>
+	<File name="label.cpp" open="1" top="1" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10259" topLine="229" />
+		</Cursor>
+	</File>
+	<EditorTabsLayout layout="0c9300e054ec850500543a8000000002=0;stdctrls:../../include/xpainter.h,1;stdctrls:stdctrls.cpp,2;stdctrls:xpainter.cpp,3;stdctrls:zoomler.cpp,4;stdctrls:../../include/stdctrls.h,5;stdctrls:scrollbar.cpp,6;stdctrls:../../include/scrollbar.h,7;stdctrls:stdgraph.cpp,8;stdctrls:../../include/stdgraph.h,9;stdctrls:../../include/label.h,*10;stdctrls:label.cpp,11;progtest:TestForm.cpp,12;progtest:MainTest.cpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=599;besth=250;minw=599;minh=250;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0c9300e054ec850500543a8000000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
 </CodeBlocks_layout_file>
