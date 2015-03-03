@@ -191,9 +191,17 @@ struct TRect
     {
         return left + width - 1;
     }
+    void right(int r)
+    {
+        width = (r >= left) ? r - left + 1 : 0;
+    }
     int bottom() const
     {
         return top + height - 1;
+    }
+    void bottom(int b)
+    {
+        height = (b >= top) ? b - top + 1 : 0;
     }
     void __fastcall round(uint_t arx, uint_t ary)
     {
@@ -275,6 +283,7 @@ struct TRect
     }
 };
 
+inline TRect Rect(int left, int top, int right, int bottom) { TRect r; r.bounds(left, top, right, bottom); return r; };
 inline void OffsetRect(TRect &rect, int dx, int dy) { rect.offset(dx, dy); };
 //---------------------------------------------------------------------------
 //  TEllipse
@@ -951,13 +960,9 @@ public:
     void Ellipse(const TRect &rect);
     void FillRect(int x1, int y1, uint_t width, uint_t height);
     void FillRect(const TRect &rect);
-    void FillRoundRect(int x, int y, uint_t width, uint_t height,
-                       int dx, int dy);
+    void FillRoundRect(int x, int y, uint_t width, uint_t height, int dx, int dy);
     void FillRegion(const TRegion &rgn);
-    inline void FrameRect(const TRect &rect)
-    {
-        Rectangle(rect);
-    };
+    inline void FrameRect(const TRect &rect) { Rectangle(rect); };
     void Highlight(TRect &rect, int level);
     TColor LightenColor(TColor color, int level);
     void Line(int x1, int y1, int x2, int y2);
@@ -967,16 +972,10 @@ public:
     void Pie(int x, int y, uint_t width, uint_t height, int angle1, int angle2);
     void Pie(int X1, int Y1, int X2, int Y2, int X3, int Y3, int X4, int Y4);
     void Point(int x, int y);
-    inline void Point(const TPoint &point)
-    {
-        Point(point.x, point.y);
-    };
+    inline void Point(const TPoint &point) { Point(point.x, point.y); };
     void Points(TPoint *points, int npoints, int mode);
     TColor Pixels(int x, int y);
-    inline TColor Pixels(const TPoint &point)
-    {
-        return Pixels(point.x, point.y);
-    };
+    inline TColor Pixels(const TPoint &point) { return Pixels(point.x, point.y); };
     void Pixels(int x, int y, TColor color);
     void Polygon(TPoint *points, const int npoints);
     void Polyline(TPoint *points, const int npoints);
@@ -990,10 +989,7 @@ public:
     void StretchDraw(const TRect &rect, TGraphic &g);
     void TextLine(int x, int y, int delta, TStrings &text);
     void TextOut(int x, int y, const TString &text);
-    inline void TextOut(const TString &text)
-    {
-        TextOut(PenPos.x, PenPos.y, text);
-    };
+    inline void TextOut(const TString &text) { TextOut(PenPos.x, PenPos.y, text); };
     void TextRect(const TRect &rect, int x, int y, const TString &text, TAlign flags = alNone);
     inline void TextRect(const TRect &rect, const TString &text, TAlign flags = alNone)
     {

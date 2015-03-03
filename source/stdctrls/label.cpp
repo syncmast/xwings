@@ -106,7 +106,7 @@ __fastcall void TmyaSuperLabel :: Assign(const TmyaSuperLabel &obj)
 void TmyaSuperLabel :: DoDrawText(const TRect &Area, word_t Flags)
 {
     TString text;
-    byte_t Size;
+//    byte_t Size;
     TRect TmpRect;
     TColor UpperColor, LowerColor;
 
@@ -267,12 +267,12 @@ void TmyaSuperLabel :: Paint()
     TPoint AuxPoint;
     TString AuxCaption;
 
-    FromR = TColorQuad(m_BeginColor).Red;
-    FromG = TColorQuad(m_BeginColor).Green;
-    FromB = TColorQuad(m_BeginColor).Blue;
-    DiffR = TColorQuad(m_EndColor).Red-FromR;
-    DiffG = TColorQuad(m_EndColor).Green-FromG;
-    DiffB = TColorQuad(m_EndColor).Blue-FromB;
+    FromR = R(m_BeginColor);
+    FromG = G(m_BeginColor);
+    FromB = B(m_BeginColor);
+    DiffR = R(m_EndColor) - FromR;
+    DiffG = G(m_EndColor) - FromG;
+    DiffB = B(m_EndColor) - FromB;
 /*    { FromR := FBeginColor and $000000ff;
     FromG := (FBeginColor shr 8) and $000000ff;
     FromB := (FBeginColor shr 16) and $000000ff;
@@ -527,7 +527,6 @@ void TmyaSuperLabel :: set_LineStyle(TLineStyle value)
 void TmyaSuperLabel :: Click()
 {
     TString Choice, App;
-    char TempPChar[80];
 
     TCommonLabel :: Click();
     if(Url == "")
@@ -543,12 +542,11 @@ void TmyaSuperLabel :: Click()
     }
     if(m_LabelType > ltSubSuperScript)
     {
-        StrPCopy(TempPChar,App);
-        OpenObject(TempPChar);
+        OpenObject(App);
     }
 }
 
-void TmyaSuperLabel :: OpenObject(char *sObjectPath)
+void TmyaSuperLabel :: OpenObject(TString &sObjectPath)
 {
 /*    if(LabelType in [ltNormal, ltSubSuperScript])
         return;
@@ -568,26 +566,26 @@ void TmyaSuperLabel :: DrawLeftFadeLine(TPoint &APoint, int ALength, int AFadeWi
     int R1, G1, B1, R2, G2, B2;
     TColor C;
 
-    C = ColorToRGB(AFadeColor);
-    R1 = TColorQuad(C).Red;
-    G1 = TColorQuad(C).Green;
-    B1 = TColorQuad(C).Blue;
-  for(register int I = APoint.X; I <= APoint.X + ALength; I++)
+    C = AFadeColor;
+    R1 = R(C);
+    G1 = G(C);
+    B1 = B(C);
+  for(register int I = APoint.x; I <= APoint.x + ALength; I++)
   {
     if(I < (APoint.x + AFadeWidth))
     {
-      C = Canvas.Pixels[I, APoint.y];
-      R2 = TColorQuad(C).Red;
-      G2 = TColorQuad(C).Green;
-      B2 = TColorQuad(C).Blue;
+      C = Canvas.Pixels(I, APoint.y);
+      R2 = R(C);
+      G2 = G(C);
+      B2 = B(C);
       R2 = R2+(((R1-R2)*(I-APoint.x)) / AFadeWidth);
       G2 = G2+(((G1-G2)*(I-APoint.x)) / AFadeWidth);
       B2 = B2+(((B1-B2)*(I-APoint.x)) / AFadeWidth);
       C = RGB(R2, G2, B2);
-      Canvas.Pixels[I,APoint.y] = C;
+      Canvas.Pixels(I,APoint.y, C);
     }
     else
-        Canvas.Pixels[I,APoint.y] = AFadeColor;
+        Canvas.Pixels(I,APoint.y, AFadeColor);
   }
 }
 
@@ -596,26 +594,26 @@ void TmyaSuperLabel :: DrawRightFadeLine(TPoint &APoint, int ALength, int AFadeW
     int R1, G1, B1, R2, G2, B2;
     TColor C;
 
-    C = ColorToRGB(AFadeColor);
-    R1 = TColorQuad(C).Red;
-    G1 = TColorQuad(C).Green;
-    B1 = TColorQuad(C).Blue;
+    C = AFadeColor;
+    R1 = R(C);
+    G1 = G(C);
+    B1 = B(C);
     for(register int I = APoint.x; I <= APoint.x + ALength; I++)
     {
-        if(I > (APoint.x + Alength-AFadeWidth))
+        if(I > (APoint.x + ALength-AFadeWidth))
         {
-            C = Canvas.Pixels[I, APoint.y];
-            R2 = TColorQuad(C).Red;
-            G2 = TColorQuad(C).Green;
-            B2 = TColorQuad(C).Blue;
+            C = Canvas.Pixels(I, APoint.y);
+            R2 = R(C);
+            G2 = G(C);
+            B2 = B(C);
             R2 = R2+(((R1-R2)*(APoint.x+ALength-I)) / AFadeWidth);
             G2 = G2+(((G1-G2)*(APoint.x+ALength-I)) / AFadeWidth);
             B2 = B2+(((B1-B2)*(APoint.x+ALength-I)) / AFadeWidth);
             C = RGB(R2, G2, B2);
-            Canvas.Pixels[I,APoint.y] = C;
+            Canvas.Pixels(I,APoint.y, C);
         }
         else
-            Canvas.Pixels[I,APoint.y] = AFadeColor;
+            Canvas.Pixels(I,APoint.y, AFadeColor);
     }
 }
 
@@ -639,11 +637,11 @@ void TmyaSuperLabel :: DoHorizontal(int fr, int fg, int fb, int dr, int dg, int 
     byte_t R, G, B;
 
     ColorRect.top = 0;                    //{ Set rectangle top }
-    ColorRect.Bottom = Height;
+    ColorRect.height = Height;
     for(I=0 ; I <= 255; I++)
     {                                   //{ Make lines (rectangles) of color }
         ColorRect.left = MulDiv(I, Width, 256);      //{ Find left for this color }
-        ColorRect.Right = MulDiv(I+1, Width, 256);   //{ Find Right }
+        ColorRect.right(MulDiv(I+1, Width, 256));   //{ Find Right }
         R = fr + MulDiv(I, dr, 255);           //{ Find the RGB values }
         G = fg + MulDiv(I, dg, 255);
         B = fb + MulDiv(I, db, 255);
@@ -697,14 +695,14 @@ void TmyaSuperLabel :: DoElliptic(int fr, int fg, int fb, int dr, int dg, int db
   for(I = 0; I <= 155; I++)
   {         //{ Make ellipses of color }
     x1 = x1 + Pw;
-    x2 = X2 - Pw;
+    x2 = x2 - Pw;
     y1 = y1 + Ph;
     y2 = y2 - Ph;
     R = fr + MulDiv(I, dr, 155);                       //{ Find the RGB values }
     G = fg + MulDiv(I, dg, 155);
     B = fb + MulDiv(I, db, 155);
-    Canvas.Brush->Color = R or (G shl 8) or (b shl 16); //{ Plug colors into brush }
-    Canvas.Ellipse(Trunc(x1),Trunc(y1),Trunc(x2),Trunc(y2));
+    Canvas.Brush->Color = R or (G << 8) or (B << 16); //{ Plug colors into brush }
+    Canvas.Ellipse(Rect(int(x1),int(y1),int(x2),int(y2)));
   }
   Canvas.Pen->Style = psSolid;
 }
@@ -730,14 +728,14 @@ void TmyaSuperLabel :: DoRectangle(int fr, int fg, int fb, int dr, int dg, int d
   for(I = 0; I <= 255; I++)
   {         //{ Make rectangles of color }
     x1 = x1 + Pw;
-    x2 = X2 - Pw;
+    x2 = x2 - Pw;
     y1 = y1 + Ph;
     y2 = y2 - Ph;
     R = fr + MulDiv(I, dr, 255);    //{ Find the RGB values }
     G = fg + MulDiv(I, dg, 255);
     B = fb + MulDiv(I, db, 255);
     Canvas.Brush->Color = RGB(R, G, B);   //{ Plug colors into brush }
-    Canvas.FillRect(Rect(Trunc(x1),Trunc(y1),Trunc(x2),Trunc(y2)));
+    Canvas.FillRect(Rect(int(x1),int(y1),int(x2),int(y2)));
   }
   Canvas.Pen->Style = psSolid;
 }
@@ -754,18 +752,18 @@ void TmyaSuperLabel :: DoVertCenter(int fr, int fg, int fb, int dr, int dg, int 
     cHeight = Height;
     Haf = cHeight / 2;
     ColorRect.left = 0;
-    ColorRect.Right = cWidth;
+    ColorRect.width = cWidth;
     for(I = 0; I <= Haf; I++)
     {
         ColorRect.top = MulDiv (I, Haf, Haf);
-        ColorRect.Bottom = MulDiv (I + 1, Haf, Haf);
+        ColorRect.bottom(MulDiv (I + 1, Haf, Haf));
         R = fr + MulDiv(I, dr, Haf);
         G = fg + MulDiv(I, dg, Haf);
         B = fb + MulDiv(I, db, Haf);
         Canvas.Brush->Color = RGB(R, G, B);
         Canvas.FillRect(ColorRect);
         ColorRect.top = Height - (MulDiv (I, Haf, Haf));
-        ColorRect.Bottom = Height - (MulDiv (I + 1, Haf, Haf));
+        ColorRect.bottom(Height - MulDiv (I + 1, Haf, Haf));
         Canvas.FillRect(ColorRect);
     };
 }
@@ -786,14 +784,14 @@ void TmyaSuperLabel :: DoHorizCenter(int fr, int fg, int fb, int dr, int dg, int
   for(I = 0; I <= Haf; I++)
   {
     ColorRect.left = MulDiv (I, Haf, Haf);
-    ColorRect.Right = MulDiv (I + 1, Haf, Haf);
+    ColorRect.right(MulDiv (I + 1, Haf, Haf));
     R = fr + MulDiv(I, dr, Haf);
     G = fg + MulDiv(I, dg, Haf);
     B = fb + MulDiv(I, db, Haf);
     Canvas.Brush->Color = RGB(R, G, B);
     Canvas.FillRect(ColorRect);
     ColorRect.left = Width - (MulDiv (I, Haf, Haf));
-    ColorRect.Right = Width - (MulDiv (I + 1, Haf, Haf));
+    ColorRect.right(Width - MulDiv (I + 1, Haf, Haf));
     Canvas.FillRect(ColorRect);
   }
 }
@@ -803,11 +801,10 @@ TString TmyaSuperLabel :: ExtractCaption(TString value)
     byte_t nFor;
     TString AuxString;
 
-    AuxString = "";
-    for(nFor = 1; nFor <= Length(value); nFor++)
+    for(nFor = 1; nFor <= value.Length(); nFor++)
         if((value[nFor] != SUB) and (value[nFor] != SUPER))
             AuxString = AuxString + value[nFor];
-    ExtractCaption = AuxString;
+    return AuxString;
 }
 //---------------------------------------------------------------------------
 } //namespace

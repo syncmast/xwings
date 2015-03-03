@@ -127,7 +127,7 @@ public:
    	virtual ~TmyaSuperLabel();
    	__fastcall const TmyaSuperLabel & operator=(const TmyaSuperLabel &a);
 
-    void OpenObject(char *sObjectPath); //{Related to hiperlink}
+    void OpenObject(TString &sObjectPath); //{Related to hiperlink}
 
     property (m, int, AHShadeOffset);
     property (m, int, AVShadeOffset);
